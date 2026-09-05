@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="path" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#d9d4ff"/>
+      <stop offset=".5" stop-color="#c5bcff"/>
+      <stop offset="1" stop-color="#aaa0ff"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9c8cff"/>
+      <stop offset="1" stop-color="#7158e8"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#754cff"/>
+      <stop offset="1" stop-color="#4f2bd9"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#6040df" flood-opacity=".22"/>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="900" fill="#fff"/>
+  <ellipse cx="700" cy="470" rx="430" ry="330" fill="#eeeaff" opacity=".28" filter="url(#soft)"/>
+
+  <!-- purple glow -->
+  <path d="M330 735 C500 780 760 720 610 580 C500 480 720 445 815 380 C900 320 735 265 690 225 C650 190 850 150 950 120"
+        fill="none" stroke="#7357ff" stroke-width="95" stroke-linecap="round" opacity=".18" filter="url(#soft)"/>
+
+  <!-- road lower side -->
+  <path d="M330 750 C500 795 760 735 610 595 C500 495 720 460 815 395 C900 335 735 280 690 240 C650 205 850 165 950 135"
+        fill="none" stroke="url(#side)" stroke-width="78" stroke-linecap="round" filter="url(#shadow)"/>
+
+  <!-- road top -->
+  <path d="M330 725 C500 770 760 710 610 570 C500 470 720 435 815 370 C900 310 735 255 690 215 C650 180 850 140 950 110"
+        fill="none" stroke="url(#path)" stroke-width="78" stroke-linecap="round"/>
+
+  <!-- road highlight -->
+  <path d="M330 713 C500 756 735 700 602 570 C500 470 720 435 805 370 C875 315 730 260 685 218 C650 188 845 145 945 112"
+        fill="none" stroke="#f4f2ff" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+
+  <!-- current node -->
+  <g filter="url(#shadow)">
+    <ellipse cx="330" cy="725" rx="78" ry="25" fill="#8b79ee" opacity=".35"/>
+    <circle cx="330" cy="705" r="58" fill="#fff"/>
+    <circle cx="330" cy="705" r="45" fill="#252a3d"/>
+    <circle cx="330" cy="693" r="10" fill="#fff"/>
+    <path d="M307 728c0-17 10-27 23-27s23 10 23 27" fill="#fff"/>
+  </g>
+
+  <!-- next node -->
+  <g filter="url(#shadow)">
+    <ellipse cx="610" cy="565" rx="72" ry="22" fill="#7255e8" opacity=".32"/>
+    <circle cx="610" cy="545" r="55" fill="#fff"/>
+    <circle cx="610" cy="545" r="42" fill="url(#purple)"/>
+    <path d="M596 556l24-24m0 0h-14m14 0v14" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- future node -->
+  <g filter="url(#shadow)">
+    <ellipse cx="815" cy="365" rx="72" ry="22" fill="#7255e8" opacity=".28"/>
+    <circle cx="815" cy="345" r="55" fill="#fff"/>
+    <circle cx="815" cy="345" r="42" fill="#dfff62"/>
+    <path d="M815 319l8 18 20 2-15 13 5 20-18-10-18 10 5-20-15-13 20-2z" fill="#2d3150"/>
+  </g>
+
+  <!-- destination -->
+  <g filter="url(#shadow)">
+    <ellipse cx="950" cy="112" rx="72" ry="22" fill="#7255e8" opacity=".3"/>
+    <circle cx="950" cy="92" r="55" fill="#fff"/>
+    <circle cx="950" cy="92" r="42" fill="#ddd8ff"/>
+    <line x1="950" y1="105" x2="950" y2="20" stroke="#252a3d" stroke-width="7" stroke-linecap="round"/>
+    <path d="M952 22h58l-25 22h-33z" fill="#6444ed"/>
+  </g>
+
+  <!-- labels -->
+  <g font-family="Arial, sans-serif" font-weight="700" fill="#202437">
+    <rect x="80" y="665" width="155" height="62" rx="15" fill="#fff" stroke="#eeeefa"/>
+    <text x="157" y="704" text-anchor="middle" font-size="23">تو اینجایی</text>
+    <circle cx="235" cy="696" r="6" fill="#6846ee"/>
+    <path d="M241 696h55l28 20" fill="none" stroke="#6846ee" stroke-width="2" stroke-dasharray="6 6"/>
+
+    <rect x="355" y="450" width="155" height="62" rx="15" fill="#fff" stroke="#eeeefa"/>
+    <text x="432" y="489" text-anchor="middle" font-size="23">قدم بعدی</text>
+    <circle cx="510" cy="481" r="6" fill="#6846ee"/>
+    <path d="M516 481h55l28 25" fill="none" stroke="#6846ee" stroke-width="2" stroke-dasharray="6 6"/>
+
+    <rect x="470" y="275" width="190" height="62" rx="15" fill="#fff" stroke="#eeeefa"/>
+    <text x="565" y="314" text-anchor="middle" font-size="23">قدم‌های بعدی</text>
+    <circle cx="660" cy="306" r="6" fill="#6846ee"/>
+    <path d="M666 306h55l30 28" fill="none" stroke="#6846ee" stroke-width="2" stroke-dasharray="6 6"/>
+
+    <rect x="600" y="65" width="135" height="62" rx="15" fill="#fff" stroke="#eeeefa"/>
+    <text x="667" y="104" text-anchor="middle" font-size="23">مقصد</text>
+    <circle cx="735" cy="96" r="6" fill="#6846ee"/>
+    <path d="M741 96h100l55 28" fill="none" stroke="#6846ee" stroke-width="2" stroke-dasharray="6 6"/>
+  </g>
+</svg>

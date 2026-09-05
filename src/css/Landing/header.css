@@ -1,0 +1,389 @@
+@font-face {
+    font-family:'Vazirmatn' ;
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+header {
+    margin: 45px;
+    font-family: 'Vazirmatn' , sans-serif;
+    direction: rtl;
+}
+nav {
+    background: #FFFFFF;
+    box-shadow: 5px  5px  18px 2px #e8e8ef;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.name-logo {
+    color: #171B2D;
+    font-weight: bold;
+    font-size: 23px;
+    margin-right: 6px;
+}
+.how-to-work {
+    color: #171B2D;
+    text-decoration: none;
+    font-weight: normal;
+    margin-top: 2px;
+}
+.login-signup {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #5B35F5;
+    padding: 5px;
+    border-radius: 8px;
+}
+nav .left:last-child {
+    display: flex;
+    gap: 70px;
+}
+
+.hero {
+    display: flex;
+    margin-top: 20px;
+    gap: 40px;
+    background:radial-gradient(#e3ddfc , #FFFFFF);
+    border-radius: 10px;
+    box-shadow: 2px 2px 19px #e8e8ef;
+}
+img {
+    max-width:800px;
+    box-shadow: 5px 5px 18px #e8e8ef;
+    border-radius: 10px;
+}
+.introduce h1 {
+    font-weight: bold;
+    font-size: 40px;
+    color: #171B2D;
+}
+.name-color {
+    color: #5B35F5;
+    font-size: 25px;
+}
+.introduce h3 {
+    font-size: 25px;
+}
+.d-tile {
+    font-size: 14px;
+    color: #5F6473;
+}
+.find-my-road {
+    padding: 10px 35px 10px 35px;
+    border: none;
+    border-radius: 6px;
+    background-color: #5B35F5;
+    font-family: 'Vazirmatn';
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px #dadae0;
+}
+.find-my-road:hover {
+    background-color: #7C5CFF;
+    cursor: pointer;
+    transform: scale(0.99);
+}
+.find-my-road-link {
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
+    gap: 10px;
+    text-decoration: none;
+    padding: 0px 4px 0px 4px;
+}
+.start-free {
+    color: #5F6473;
+    font-size: 10px;
+}
+.menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+ /* =========================================
+    HEADER RESPONSIVE
+    ========================================= */
+
+
+/* ---------- Small Desktop / Large Tablet ---------- */
+
+@media (max-width: 1200px) {
+
+    header {
+        margin: 30px;
+    }
+
+    nav .left:last-child {
+        gap: 40px;
+    }
+
+    .hero {
+        gap: 20px;
+    }
+
+    .hero > img {
+        width: 55%;
+        max-width: 650px;
+        height: auto;
+    }
+
+    .introduce {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .introduce h1 {
+        font-size: 32px;
+    }
+
+    .introduce h3 {
+        font-size: 22px;
+    }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        margin: 20px;
+    }
+
+    nav {
+        padding: 7px;
+    }
+
+    nav .left:last-child {
+        gap: 25px;
+    }
+
+    .hero {
+        gap: 15px;
+    }
+
+    .hero > img {
+        width: 50%;
+    }
+
+    .introduce h1 {
+        font-size: 27px;
+        margin-top: 25px;
+    }
+
+    .introduce h3 {
+        font-size: 20px;
+    }
+
+    .name-color {
+        font-size: 21px;
+    }
+
+    .d-tile {
+        font-size: 13px;
+    }
+
+    .find-my-road {
+        padding: 9px 25px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        margin: 12px;
+    }
+
+    /* ---------- Navbar ---------- */
+
+    nav {
+        padding: 7px 9px;
+    }
+
+    .name-logo {
+        font-size: 21px;
+        margin-right: 3px;
+    }
+    nav {
+        position: relative;
+    }
+    nav .left:last-child {
+        display: none;
+    }
+    nav .left.open {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    flex-direction: column;
+    gap: 10px;
+
+    background: #FFFFFF;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 18px 2px #e8e8ef;
+
+    min-width: 180px;
+    }
+    nav .left.open a {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    }
+    nav .left.open .how-to-work {
+    padding: 8px;
+    }
+
+    nav .left.open .login-signup {
+    padding: 8px;
+    }   
+    .how-to-work {
+        font-size: 13px;
+    }
+
+    .login-signup {
+        font-size: 13px;
+        padding: 5px 8px;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+        flex-direction: column;
+        gap: 0;
+        margin-top: 15px;
+        overflow: hidden;
+    }
+
+    .hero > img {
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .introduce {
+        order: 2;
+        text-align: center;
+        padding: 0 15px 20px;
+    }
+
+    .introduce h1 {
+        font-size: 25px;
+        margin: 15px 0 8px;
+    }
+
+    .introduce h3 {
+        font-size: 20px;
+        margin: 5px 0 10px;
+    }
+
+    .name-color {
+        font-size: 20px;
+    }
+
+    .d-tile {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .find-my-road {
+        margin: 15px auto 8px;
+        padding: 9px 25px;
+    }
+
+    .start-free {
+        font-size: 9px;
+    }
+    .menu-btn {
+        display: inline;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 450px) {
+
+    header {
+        margin: 8px;
+    }
+
+    /* ---------- Navbar ---------- */
+
+    nav {
+        padding: 6px 8px;
+    }
+
+    .name-logo {
+        font-size: 19px;
+    }
+
+    nav .left:last-child {
+        gap: 8px;
+    }
+
+    .how-to-work {
+        font-size: 11px;
+    }
+
+    .login-signup {
+        font-size: 11px;
+        padding: 4px 7px;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+        margin-top: 12px;
+    }
+
+    .introduce {
+        padding: 0 10px 15px;
+    }
+
+    .introduce h1 {
+        font-size: 21px;
+    }
+
+    .introduce h3 {
+        font-size: 18px;
+    }
+
+    .name-color {
+        font-size: 18px;
+    }
+
+    .d-tile {
+        font-size: 11px;
+    }
+
+    .find-my-road {
+        padding: 8px 20px;
+    }
+
+    .find-my-road-link {
+        font-size: 12px;
+    }
+
+    .start-free {
+        font-size: 8px;
+    }
+}

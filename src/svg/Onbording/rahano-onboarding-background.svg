@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" fill="none">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="58%" stop-color="#FBFAFF"/>
+      <stop offset="100%" stop-color="#F3F1FC"/>
+    </radialGradient>
+
+    <linearGradient id="leftPurple" x1="0" y1="0" x2="160" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#DDD4FF" stop-opacity=".28"/>
+      <stop offset="45%" stop-color="#CFC2FF" stop-opacity=".58"/>
+      <stop offset="100%" stop-color="#8C6AF4" stop-opacity=".18"/>
+    </linearGradient>
+
+    <linearGradient id="leftRibbon" x1="0" y1="430" x2="150" y2="950" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".20"/>
+      <stop offset="55%" stop-color="#E4DDFF" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#BBA9FF" stop-opacity=".10"/>
+    </linearGradient>
+
+    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+
+    <filter id="softBlur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity=".20"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1536" height="1024" fill="url(#bgGlow)"/>
+
+  <!-- Very subtle ambient glows -->
+  <ellipse cx="760" cy="450" rx="520" ry="370" fill="#FFFFFF" opacity=".38" filter="url(#blur)"/>
+  <ellipse cx="1430" cy="820" rx="180" ry="250" fill="url(#glow)" opacity=".32" filter="url(#softBlur)"/>
+
+  <!-- Left flowing decorative form -->
+  <path d="M0 370
+           C72 394 112 443 101 505
+           C94 546 55 579 34 624
+           C5 685 13 742 61 800
+           C104 852 125 908 102 972
+           C96 989 88 1007 78 1024
+           L0 1024 Z"
+        fill="url(#leftPurple)"/>
+
+  <path d="M0 450
+           C46 478 70 518 61 559
+           C53 600 20 633 8 683
+           C-7 744 21 790 58 838
+           C101 894 109 948 82 1009"
+        stroke="url(#leftRibbon)"
+        stroke-width="46"
+        stroke-linecap="round"
+        opacity=".42"
+        filter="url(#softBlur)"/>
+
+  <path d="M0 447
+           C49 475 69 515 60 559
+           C51 602 20 633 8 682
+           C-6 741 21 788 58 837
+           C101 893 109 948 82 1009"
+        stroke="#FFFFFF"
+        stroke-opacity=".58"
+        stroke-width="1.5"/>
+
+  <path d="M0 372
+           C71 397 108 445 99 504
+           C93 544 55 580 34 624"
+        stroke="#D7CDFF"
+        stroke-opacity=".42"
+        stroke-width="1"/>
+
+  <!-- Right dotted decorative curve -->
+  <path d="M1536 556
+           C1468 544 1427 565 1429 610
+           C1431 659 1482 696 1482 748
+           C1482 797 1435 819 1414 853"
+        stroke="#7650F3"
+        stroke-opacity=".78"
+        stroke-width="1.3"
+        stroke-dasharray="8 8"
+        stroke-linecap="round"/>
+
+  <path d="M1536 553
+           C1467 541 1424 564 1426 611"
+        stroke="#FFFFFF"
+        stroke-opacity=".35"
+        stroke-width="1"/>
+
+  <!-- Sparkles -->
+  <g opacity=".9">
+    <path d="M1434 422 C1437 432 1441 436 1451 439 C1441 442 1437 446 1434 456 C1431 446 1427 442 1417 439 C1427 436 1431 432 1434 422Z" fill="#B8A6FF"/>
+    <path d="M124 646 C127 655 131 659 140 662 C131 665 127 669 124 678 C121 669 117 665 108 662 C117 659 121 655 124 646Z" fill="#6F3DF4"/>
+    <path d="M1424 790 C1427 800 1431 804 1441 807 C1431 810 1427 814 1424 824 C1421 814 1417 810 1407 807 C1417 804 1421 800 1424 790Z" fill="#6F3DF4"/>
+    <path d="M1418 862 C1421 872 1425 876 1435 879 C1425 882 1421 886 1418 896 C1415 886 1411 882 1401 879 C1411 876 1415 872 1418 862Z" fill="#B8F04B"/>
+  </g>
+
+  <!-- Tiny left sparkles -->
+  <g fill="#FFFFFF" opacity=".85">
+    <path d="M48 804 L51 813 L60 816 L51 819 L48 828 L45 819 L36 816 L45 813 Z"/>
+    <path d="M18 881 L20 887 L26 889 L20 891 L18 897 L16 891 L10 889 L16 887 Z"/>
+  </g>
+
+  <!-- Subtle lavender haze near lower center -->
+  <ellipse cx="765" cy="965" rx="410" ry="70" fill="#A995FF" opacity=".055" filter="url(#softBlur)"/>
+</svg>

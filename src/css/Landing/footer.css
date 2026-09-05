@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+.footer {
+    font-family: 'Vazirmatn', sans-serif;
+    direction: rtl;
+
+    background-image: url(../../svg/Landing/pastel_journey_summit.svg);
+     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;    
+    height: 350px;
+    position: relative;
+    text-align: center;
+    align-items: center; 
+
+}
+.you-shold-not-know-all-the-road {
+    text-align: center;
+    color: #171B2D;
+    font-size: 27px;
+    padding-top: 15px;
+}
+.know-next-step {
+    text-align: center;
+    font-size: 30px;
+    color: #171B2D;
+}
+.know-next-step span {
+    color: #5B35F5;
+}
+.find-my-road-two {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 60px 10px 60px;
+    border: none;
+    border-radius: 12px;
+    background-color: #5B35F5;
+    font-family: 'Vazirmatn';
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px #dadae0;
+    margin: 0 auto;
+}
+.find-my-road-two:hover {
+    background-color: #7C5CFF;
+    cursor: pointer;
+    transform: scale(0.99);
+}
+.footer p {
+    color: #606265;
+    font-size: 14px;
+    text-align: center;
+    margin-right: 15px;
+}
+.brand {
+    margin: 30px;
+    text-align: center;
+    direction: rtl;
+}
+.brand p {
+    color: #606265;
+    margin: 0px;
+    font-size: 15px;
+}
+
+/* =========================================
+   FOOTER RESPONSIVE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .footer {
+        height: 320px;
+        background-size: cover;
+        background-position: center;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .you-shold-not-know-all-the-road {
+        font-size: 23px;
+        padding-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .know-next-step {
+        font-size: 25px;
+        margin-top: 0;
+    }
+
+    .find-my-road-two {
+        padding: 9px 30px;
+        margin: 25px auto 0;
+        font-size: 13px;
+    }
+
+    .footer p {
+        font-size: 11px;
+        margin-top: 15px;
+    }
+
+    .brand {
+        margin: 20px 10px;
+    }
+
+    .brand h3 {
+        font-size: 20px;
+    }
+
+    .brand p {
+        font-size: 12px;
+    }
+}
+@media (max-width: 450px) {
+
+    .footer {
+        height: 290px;
+        padding: 0 10px;
+    }
+
+    .you-shold-not-know-all-the-road {
+        font-size: 20px;
+        padding-top: 25px;
+    }
+
+    .know-next-step {
+        font-size: 22px;
+    }
+
+    .find-my-road-two {
+        padding: 8px 22px;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    .footer p {
+        font-size: 10px;
+    }
+
+    .brand {
+        margin-top: 15px;
+    }
+
+    .brand p {
+        font-size: 11px;
+    }
+}

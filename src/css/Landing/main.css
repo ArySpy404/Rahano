@@ -1,0 +1,867 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font//Vazirmatn-VariableFont_wght.ttf);
+}
+main {
+    font-family: 'Vazirmatn' , sans-serif;
+    direction: rtl;
+    margin: 45px;
+    border-radius: 30px 30px 0px 0px;
+    box-shadow: 0px 0px 10px 0px #E8E8EF;
+}
+.choises {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #E8E8EF ;
+}
+.choise-header {
+    color: #171B2D;
+    font-size: 30px;
+}
+.introduce-road {
+    color: #5F6473;
+    font-size: 15px;
+}
+.container {
+    margin: 30px;
+}
+.how-to-work-two {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #171B2D;
+    direction: rtl;
+}
+.how-to-work-svg {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+    margin: 0px 130px 0px 130px;
+}
+.how-to-work-svg  img{
+    width: 100%;
+    max-width: 337px;
+    height: 280px;
+    border-radius: 20px;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+}
+.know-were-are-you {
+    border: 1px solid #E8E8EF;
+    border-radius: 20px;
+}
+.target {
+    border: 1px solid #E8E8EF;
+    border-radius: 20px;
+}
+.target img {
+    width: 340px;
+}
+.next-step {
+    border: 1px solid #E8E8EF;
+    border-radius: 20px;
+}
+.img-title {
+    margin: 0px;
+    color: #171B2D;
+    font-size: 20px;
+}
+.img-dTile {
+    color: #5F6473;
+    font-size: 15px;
+    margin: 10px;
+}
+.step-num {
+    background-color: #9c87f1;
+    color: #FFFFFF;
+    display: inline-flex;
+    border-radius:50% ;
+    padding: 4px 7px 4px 7px;
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+.roads-for-roadmaps {
+    margin: 30px 160px 30px 160px;
+}
+.road-for-everyone{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #171B2D;
+}
+.roads {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+    align-items: center;
+    text-align: center;
+}
+.roads > div {
+    min-width: 0;
+}
+.roads img {
+    max-width: 100%;
+    box-shadow: none;
+    height: 250px;
+    margin-top: 10px;
+}
+.music {
+    box-shadow: 0px 0px 10px 5px #FFF0F1;
+    max-height: 450px;
+    border-radius: 20px;
+    width: 350px;
+}
+.roads h3 {
+    text-align: center;
+    font-size: 15px;
+    margin: 0px;
+    color: #171B2D;
+    font-weight: bold;
+}
+.roads p {
+    color: #5F6473;
+    margin: 5px 30px 5px 30px;
+    text-align: center;
+    font-size: 13px;
+}
+.coding {
+    box-shadow: 0px 0px 10px 5px #F0F3FF;
+    max-height: 450px;
+    border-radius: 20px;
+    width: 350px;
+}
+.coding img {
+    margin: 0px;
+}
+.sketch {
+    box-shadow: 0px 0px 10px 5px #F2F9E9;
+    max-height: 450px;
+    border-radius: 20px;
+    width: 350px;
+}
+.dont-know {
+    box-shadow: 0px 0px 10px 5px #FFF7DF;
+    max-height: 450px;
+    border-radius: 20px;
+    width: 350px;
+}
+.trust-sentencs {
+    color: #6b7181;
+    text-align: center;
+    margin:20px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+
+
+
+@media (max-width: 1200px) {
+
+    main {
+        margin: 30px;
+    }
+
+    /* How to work */
+
+    .how-to-work-svg {
+        margin: 0 auto;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .how-to-work-svg .global-size {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        max-width: 337px;
+        height: auto;
+    }
+
+    .target img {
+        width: 100%;
+    }
+
+
+    /* Roads */
+
+    .roads-for-roadmaps {
+        margin: 30px 60px;
+    }
+
+    .roads {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .global-class {
+        width: 320px;
+        box-sizing: border-box;
+    }
+
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    main {
+        margin: 20px;
+    }
+
+    .container {
+        margin: 25px 15px;
+    }
+
+
+    /* ---------- How to work ---------- */
+
+    .how-to-work-svg {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .how-to-work-svg .global-size {
+        width: min(337px, 90%);
+        flex: none;
+        box-sizing: border-box;
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        max-width: 337px;
+        height: auto;
+    }
+
+    .target img {
+        width: 100%;
+    }
+
+    .arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arrow-left {
+        transform: rotate(90deg);
+    }
+
+
+    /* ---------- Roads ---------- */
+
+    .roads-for-roadmaps {
+        margin: 30px 30px;
+    }
+
+    .roads {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .global-class {
+        width: 320px;
+        box-sizing: border-box;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    main {
+        margin: 12px;
+        border-radius: 20px 20px 0 0;
+    }
+
+
+    /* ---------- Intro ---------- */
+
+    .choises {
+        padding: 8px;
+    }
+
+    .choise-header {
+        font-size: 22px;
+    }
+
+    .introduce-road {
+        font-size: 13px;
+    }
+
+
+    /* ---------- Container ---------- */
+
+    .container {
+        margin: 20px 10px;
+    }
+
+    .how-to-work-two {
+        font-size: 21px;
+    }
+
+
+    /* ---------- How to work ---------- */
+
+    .how-to-work-svg {
+        width: 100%;
+        margin: 0 auto;
+        gap: 10px;
+    }
+
+    .how-to-work-svg .global-size {
+        width: min(337px, 95%);
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        height: auto;
+    }
+
+    .img-title {
+        font-size: 18px;
+    }
+
+    .img-dTile {
+        font-size: 13px;
+    }
+
+
+    /* ---------- Roads ---------- */
+
+    .roads-for-roadmaps {
+        margin: 30px 15px;
+    }
+
+    .road-for-everyone {
+        font-size: 21px;
+    }
+
+    .roads {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .global-class {
+        width: min(350px, 100%);
+        box-sizing: border-box;
+    }
+
+    .roads img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .roads h3 {
+        font-size: 14px;
+    }
+
+    .roads p {
+        font-size: 12px;
+        margin: 5px 20px;
+    }
+
+    .trust-sentencs {
+        font-size: 12px;
+        margin: 15px 5px;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 450px) {
+
+    main {
+        margin: 8px;
+    }
+
+
+    /* ---------- Intro ---------- */
+
+    .choise-header {
+        font-size: 20px;
+    }
+
+    .introduce-road {
+        font-size: 12px;
+    }
+
+
+    /* ---------- How to work ---------- */
+
+    .how-to-work-two {
+        font-size: 19px;
+    }
+
+    .how-to-work-svg .global-size {
+        width: 100%;
+    }
+
+
+    /* ---------- Roads ---------- */
+
+    .roads-for-roadmaps {
+        margin: 25px 8px;
+    }
+
+    .road-for-everyone {
+        font-size: 19px;
+    }
+
+    .global-class {
+        width: 100%;
+    }
+
+    .roads h3 {
+        font-size: 13px;
+    }
+
+    .roads p {
+        font-size: 11px;
+        margin: 5px 10px;
+    }
+
+    .trust-sentencs {
+        font-size: 11px;
+    }
+}
+/* @media (max-width: 1200px) {
+
+    /* ---------- Main ---------- */
+
+    main {
+        margin: 30px;
+    }
+
+    /* ---------- How it works ---------- */
+
+    .how-to-work-svg {
+        margin: 0 auto;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .how-to-work-svg .global-size {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        height: auto;
+    }
+
+    .target img {
+        width: 100%;
+    }
+
+    /* ---------- Roadmaps ---------- */
+
+    .roads-for-roadmaps {
+        margin: 30px 60px;
+    }
+
+    .roads {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .global-class {
+        width: 350px;
+    }
+
+
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 900px) {
+
+    main {
+        margin: 20px;
+    }
+
+    .container {
+        margin: 25px 15px;
+    }
+
+    /* How it works → vertical */
+
+    .how-to-work-svg {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .how-to-work-svg .global-size {
+        width: min(337px, 90%);
+        flex: none;
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        height: auto;
+    }
+
+    .target img {
+        width: 100%;
+    }
+
+    .arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arrow-left {
+        transform: rotate(270deg);
+    }
+
+    /* Road cards */
+
+    .roads-for-roadmaps {
+        margin: 30px 30px;
+    }
+
+    .roads {
+        gap: 25px;
+    }
+
+    .global-class {
+        width: 320px;
+    }
+}
+
+}
+@media (max-width: 700px) {
+
+    .roads {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .global-class {
+        width: min(350px, 100%);
+        box-sizing: border-box;
+    }
+
+    .roads img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: 250px;
+        object-fit: contain;
+        margin: 10px auto 0;
+    }
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 600px) {
+
+    main {
+        margin: 12px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .choises {
+        padding: 8px;
+    }
+
+    .choise-header {
+        font-size: 22px;
+    }
+
+    .introduce-road {
+        font-size: 13px;
+    }
+
+    .container {
+        margin: 20px 10px;
+    }
+
+    .how-to-work-two {
+        font-size: 21px;
+    }
+
+    .how-to-work-svg .global-size {
+        width: min(337px, 95%);
+    }
+
+    .img-title {
+        font-size: 18px;
+    }
+
+    .img-dTile {
+        font-size: 13px;
+    }
+
+    /* Roadmaps */
+
+    .roads-for-roadmaps {
+        margin: 30px 15px;
+    }
+
+    .road-for-everyone {
+        font-size: 21px;
+    }
+
+    .roads {
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
+    }
+
+    .global-class {
+        width: min(350px, 100%);
+    }
+
+    .roads img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .roads h3 {
+        font-size: 14px;
+    }
+
+    .roads p {
+        font-size: 12px;
+        margin: 5px 20px;
+    }
+
+    .trust-sentencs {
+        font-size: 12px;
+        margin: 15px 5px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .global-class {
+        width: 100%;
+    }
+
+    .roads img {
+        height: 220px;
+    }
+}
+/* =========================
+   Very small phones
+   ========================= */
+
+@media (max-width: 400px) {
+
+    main {
+        margin: 8px;
+    }
+
+    .choise-header {
+        font-size: 20px;
+    }
+
+    .introduce-road {
+        font-size: 12px;
+    }
+
+    .how-to-work-two {
+        font-size: 19px;
+    }
+
+    .road-for-everyone {
+        font-size: 19px;
+    }
+
+    .roads-for-roadmaps {
+        margin: 25px 10px;
+    }
+
+    .global-class {
+        width: 100%;
+    }
+
+    .roads p {
+        font-size: 11px;
+        margin: 5px 12px;
+    }
+}
+/* @media (max-width: 1200px) {
+
+    .how-to-work-svg {
+        margin: 0 auto;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .how-to-work-svg .global-size {
+        width: 30%;
+        min-width: 0;
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        height: auto;
+    }
+
+    .target img {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+
+    .how-to-work-svg {
+        flex-direction: column;
+        gap: 15px;
+        margin: 0 auto;
+        width: 100%;
+        align-items: center;
+    }
+
+    .global-size {
+        width: min(337px, 90%);
+    }
+
+    .how-to-work-svg img {
+        width: 100%;
+        max-width: 337px;
+        height: auto;
+    }
+
+    .arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .arrow-left {
+        transform: rotate(270deg);
+    }
+    main {
+        margin: 20px;
+    }
+
+    .container {
+        margin: 20px 10px;
+    }
+
+} */
+
+/* @media (max-width: 1200px) {
+    .roads-for-roadmaps {
+        margin: 30px 100px 30px 100px;
+    }
+    .roads {
+        flex-wrap:wrap;
+    }
+    .how-to-work-svg {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 337px;
+        margin: auto;
+    }
+
+    .how-to-work-svg img {
+        width: 337px;
+    }
+    .arrow-left {
+        transform: rotate(270deg);
+        text-align: center;
+    }
+    .global-class {
+        width: 300px;
+    }
+}
+@media (max-width :947px) {
+    .global-class {
+        width: 250px;
+    }
+    .how-to-work-svg {
+        width: 300px;
+        margin: auto ;
+    }
+}
+@media (max-width : 834px) {
+    .global-class {
+        width: auto;
+    }
+}
+@media (max-width : 762px) {
+    .global-class {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: auto;
+        width: 450px;
+    }
+}
+@media (max-width : 510px) {
+    .choise-header {
+        font-size: 20px;
+    }
+    .introduce-road {
+        font-size: 13px;
+    }
+    .how-to-work-two {
+        font-size: 20px;
+    }
+    .img-title {
+        font-size: 18px;
+    }
+    .img-dTile {
+        font-size: 13px;
+    }
+    .roads h3 {
+    font-size: 15px;
+    }
+
+    .roads p {
+    font-size: 13px;
+    margin: 5px 20px;
+    }
+    .road-for-everyone {
+        font-size: 18px;
+    }
+    .global-size {
+        width :250px;
+    }
+    .how-to-work-svg {
+        width: auto;
+        margin: auto;
+    }
+    .global-size img {
+        width:inherit;
+    }
+}
+@media (max-width : 700px) {
+    .trust-sentencs {
+        font-size:12px ;
+    }
+} */
