@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+.where-are-you {
+    font-family: 'Vazirmatn' ,sans-serif;
+    direction: rtl;
+    background: url(../../svg/Onbording/rahano-onboarding-background.svg);
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

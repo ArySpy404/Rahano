@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+* {
+    font-family: 'Vazirmatn' , sans-serif;
+    box-sizing: border-box;
+}
+.Auth {
+    background: linear-gradient(135deg, #F9F7FD 0%, #F3F1FD 45%, #D7CCFB 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    direction: rtl;
+}
+.Auth-form {
+    min-width: auto;
+    box-shadow: 5px 5px 10px 10px #E8E8FF;
+    border: #E8E8FF 1px solid;
+    min-height: auto;
+    background-color: #fcfcfc;
+    border-radius: 28px;
+    padding: 40px;
+}
+.Auth-form h2 {
+    text-align: center;
+    font-weight:500;
+    color: #171B2D;
+}
+.chang-Auth {
+    text-align: center;
+    background-color: #EDE9FF;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+.chang-Auth button{
+    border: none;
+    width: 130px;
+    background-color: transparent;
+    color: #5F6473;
+    cursor: pointer;
+    margin: 5px;
+}

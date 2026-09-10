@@ -7,8 +7,8 @@ import { useState } from 'react';
 export default function Header () {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
     return(
-      <header>
-        <nav>
+      <header className='landing-header'>
+        <nav className='landing-nav'>
           <div className='right'>
             
             <span className='name-logo'>رهانو</span>
@@ -18,7 +18,8 @@ export default function Header () {
           </button>
           <div className={isMenuOpen ? "left open" : "left"}>
             <a href="#" className='how-to-work' onClick={() => setIsMenuOpen(false)}>چگونه کار می‌کند</a>
-          <a href="#" className='login-signup' onClick={() => setIsMenuOpen(false)}>ورود/ثبت‌ نام</a>
+          <Link to='/Auth' className='login-signup'>ورود/ثبت نام</Link>
+          
           </div>
           
         </nav>
@@ -31,7 +32,7 @@ export default function Header () {
           <h3 className='road'><span className='name-color'>رهانو </span>مسیرت رو پیدا میکنه.</h3>
           <p className='d-tile'>هدفت،شرایطت و چیزهایی که بلدی رو  بگو؛<br/>رهانو کمک می‌کنه بفهمی قدم بعدی چیه.</p>
           <button className='find-my-road'> 
-                      <Link to='/onboarding' className='find-my-road-link'>مسیرم رو پیدا کن</Link>
+                      <Link to='/onboarding/Step1' className='find-my-road-link'>مسیرم رو پیدا کن</Link>
                   <MoveLeft color='#FFFFFF'/>
                     </button>
           

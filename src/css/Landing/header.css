@@ -2,12 +2,12 @@
     font-family:'Vazirmatn' ;
     src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
 }
-header {
+.landing-header {
     margin: 45px;
     font-family: 'Vazirmatn' , sans-serif;
     direction: rtl;
 }
-nav {
+.landing-nav {
     background: #FFFFFF;
     box-shadow: 5px  5px  18px 2px #e8e8ef;
     border-radius: 8px;
@@ -35,7 +35,7 @@ nav {
     padding: 5px;
     border-radius: 8px;
 }
-nav .left:last-child {
+.landing-nav .left:last-child {
     display: flex;
     gap: 70px;
 }
@@ -117,7 +117,7 @@ img {
         margin: 30px;
     }
 
-    nav .left:last-child {
+    .landing-nav .left:last-child {
         gap: 40px;
     }
 
@@ -156,11 +156,11 @@ img {
         margin: 20px;
     }
 
-    nav {
+    .landing-nav {
         padding: 7px;
     }
 
-    nav .left:last-child {
+    .landing-nav .left:last-child {
         gap: 25px;
     }
 
@@ -201,13 +201,13 @@ img {
 
 @media (max-width: 700px) {
 
-    header {
+    .landing-header {
         margin: 12px;
     }
 
     /* ---------- Navbar ---------- */
 
-    nav {
+    .landing-nav {
         padding: 7px 9px;
     }
 
@@ -215,13 +215,13 @@ img {
         font-size: 21px;
         margin-right: 3px;
     }
-    nav {
+    .landing-nav {
         position: relative;
     }
-    nav .left:last-child {
+    .landing-nav .left:last-child {
         display: none;
     }
-    nav .left.open {
+    .landing-nav .left.open {
     display: flex;
     position: absolute;
     top: calc(100% + 8px);
@@ -236,16 +236,16 @@ img {
 
     min-width: 180px;
     }
-    nav .left.open a {
+    .landing-nav .left.open a {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
     }
-    nav .left.open .how-to-work {
+    .landing-nav .left.open .how-to-work {
     padding: 8px;
     }
 
-    nav .left.open .login-signup {
+    .landing-nav .left.open .login-signup {
     padding: 8px;
     }   
     .how-to-work {
@@ -321,13 +321,13 @@ img {
 
 @media (max-width: 450px) {
 
-    header {
+    .landing-header {
         margin: 8px;
     }
 
     /* ---------- Navbar ---------- */
 
-    nav {
+    .landing-nav {
         padding: 6px 8px;
     }
 
@@ -335,7 +335,7 @@ img {
         font-size: 19px;
     }
 
-    nav .left:last-child {
+    .landing-nav .left:last-child {
         gap: 8px;
     }
 

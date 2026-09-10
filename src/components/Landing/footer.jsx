@@ -9,7 +9,7 @@ export default function footer () {
           <h1 className='you-shold-not-know-all-the-road'>لازم نیست کل مسیر رو بدونی.</h1>
           <h1 className="know-next-step">فقط <span>قدم بعدی</span> رو پیدا کن.</h1>
           <button className='find-my-road-two'> 
-            <Link to='/onboarding' className='find-my-road-link'>مسیرم رو پیدا کن</Link>
+            <Link to='/onboarding/Step1' className='find-my-road-link'>مسیرم رو پیدا کن</Link>
         <MoveLeft color='#FFFFFF'/>
           </button>
           <p>رایگان شروع کن.بدون نیاز به کارت بانکی.

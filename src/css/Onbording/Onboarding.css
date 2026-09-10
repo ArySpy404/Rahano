@@ -1,0 +1,10 @@
+.onboarding {
+    background-image: url(../../svg/Onbording/rahano-onboarding-background.svg);
+    background-size:cover ;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

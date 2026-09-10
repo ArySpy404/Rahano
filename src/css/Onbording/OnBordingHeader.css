@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+.onboarding-header {
+    direction: rtl;
+    padding: 15px 25px 0px 15px;
+    font-family: 'Vazirmatn' , sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+.onboarding-nav {
+    margin: auto 120px auto 120px;
+}
+.onboarding-nav .name-logo {
+    font-size: 25px;
+}
