@@ -4,6 +4,7 @@ import GoalSelector from './GoalSelector';
 import '../../css/Onbording/Onboarding.css';
 import { useState } from 'react';
 import Step2Body from './step2Body';
+import LearningTime from './LearningTime';
 
 export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -32,6 +33,7 @@ export default function Onboarding() {
     {currentStep === 1 && <GoalSelector onNext={handleNext} />}
 
     {currentStep === 2 && <Step2Body  onNext={handleNext} onBack={handleBack}/>}
+    {currentStep === 3 && <LearningTime onNext={handleNext} onBack={handleBack}/>}
     </div>
     
   );

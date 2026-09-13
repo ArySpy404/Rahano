@@ -13,12 +13,13 @@
     justify-content: center;
     align-items: center;
     direction: rtl;
+    padding: 24px 16px;
 }
 .Auth-form {
-    min-width: auto;
+    width: 100%;
+    max-width: 420px;
     box-shadow: 5px 5px 10px 10px #E8E8FF;
     border: #E8E8FF 1px solid;
-    min-height: auto;
     background-color: #fcfcfc;
     border-radius: 28px;
     padding: 40px;
@@ -43,4 +44,14 @@
     color: #5F6473;
     cursor: pointer;
     margin: 5px;
+}
+
+@media (max-width: 480px) {
+    .Auth {
+        padding: 16px 12px;
+    }
+    .Auth-form {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
 }

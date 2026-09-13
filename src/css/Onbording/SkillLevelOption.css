@@ -1,3 +1,9 @@
+.step-two-body .options {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 .skill-card {
     background: #F9F7FD;
     border: 2px solid transparent;
@@ -7,13 +13,5 @@
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
-    margin: 15px;
     width: auto;
-}
-.skill-card:hover {
-    border-color: #D7CCFB;
-    background: #F3F1FD;
-}
-.skill-card p {
-    color: #5F6473;
 }

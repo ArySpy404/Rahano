@@ -4,8 +4,11 @@
     box-shadow: 0 20px 60px #5f2de624;
     align-items: center;
     padding: 50px;
-    margin: 60px 360px 60px 360px;
+    width: 100%;
+    max-width: 760px;
+    margin: 60px auto;
     max-height: 840px;
+    direction: rtl;
 }
 .lets-go {
     text-align: center;
@@ -55,4 +58,24 @@
 .links .next {
     width: 60%;
     border: none;
+}
+.next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 560px) {
+    .step-two-body {
+        padding: 28px 20px;
+        margin: 24px auto;
+        border-radius: 20px;
+    }
+    .step-two-body h2 {
+        font-size: 20px;
+    }
+    .step-two-body .back,
+    .links .next {
+        height: 54px;
+        font-size: 14px;
+    }
 }

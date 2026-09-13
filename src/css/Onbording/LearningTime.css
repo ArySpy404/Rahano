@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+.learning-time {
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: 'Vazirmatn' , sans-serif;
+    background-color: #FCFCFE;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    box-shadow: 0 20px 60px #5f2de624;
+    border-radius: 18px;
+    padding: 40px;
+    margin: 60px auto;
+}
+.time-text {
+    align-items: center;
+    gap: 4px;
+    display: flex;
+    justify-content: center;
+}
+.time-text p {
+    color: #5F2DE6;
+    font-weight: 500;
+    font-size: 18px;
+}
+.time-icon {
+    color: #5F2DE6;
+}
+h2 {
+    text-align: center;
+    font-size: 27px;
+}
+.fix-text{
+    text-align: center;
+    color: #737891;
+}
+
+.time-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.learning-time .links {
+    display: flex;
+    direction: rtl;
+    text-decoration: none;
+    justify-content: space-between;
+    gap: 10px;
+    height: auto;
+    align-items: center;
+}
+.links .back{
+    width: 40%;
+    background-color: #F9F7FD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 16px;
+    transition: opacity 0.2s ease;
+    height: 70px;
+    border: none;
+    cursor: pointer;
+}
+.links .next {
+    cursor: pointer;
+}
+
+@media (max-width: 560px) {
+    .learning-time {
+        padding: 28px 20px;
+        margin: 24px auto;
+        border-radius: 20px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .time-cards {
+        grid-template-columns: 1fr;
+    }
+    .links .back {
+        height: 54px;
+        font-size: 14px;
+    }
+}

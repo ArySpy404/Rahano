@@ -1,4 +1,3 @@
-import { Link} from 'react-router-dom';
 import { Target02Icon,Briefcase,Route02Icon,Sprout} from '@hugeicons/core-free-icons';
 import '../../css/Onbording/GoalSelector.css';
 import { MoveLeft } from 'lucide-react';
