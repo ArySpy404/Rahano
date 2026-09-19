@@ -32,7 +32,7 @@ export default function Header () {
           <h3 className='road'><span className='name-color'>رهانو </span>مسیرت رو پیدا میکنه.</h3>
           <p className='d-tile'>هدفت،شرایطت و چیزهایی که بلدی رو  بگو؛<br/>رهانو کمک می‌کنه بفهمی قدم بعدی چیه.</p>
           <button className='find-my-road'> 
-                      <Link to='/onboarding/Step1' className='find-my-road-link'>مسیرم رو پیدا کن</Link>
+                      <Link to='/onboarding' className='find-my-road-link'>مسیرم رو پیدا کن</Link>
                   <MoveLeft color='#FFFFFF'/>
                     </button>
           

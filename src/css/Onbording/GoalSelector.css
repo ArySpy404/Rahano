@@ -1,4 +1,4 @@
- @font-face {
+@font-face {
     font-family: 'Vazirmatn';
     src: url(../../font//Vazirmatn-VariableFont_wght.ttf);
 }
@@ -10,12 +10,14 @@
 .body {
   direction: rtl;
   font-family: 'Vazirmatn', sans-serif;
+  min-height: 100vh;
   display: flex;
-  flex: 1;
   align-items: center;
-  background-size: cover;
   justify-content: center;
+  background: url(../../svg/Onbording/rahano-onboarding-background.svg);
+  background-size: cover;
   padding: 40px 16px;
+  position: relative;
 }
 
 .goal-selector {
@@ -24,8 +26,9 @@
   background: #FCFCFE;
   border-radius: 28px;
   padding: 48px 56px;
-  box-shadow: 0 20px 60px rgba(95, 45, 230, 0.14);
+  box-shadow: 0 20px 60px #5f2de624;
   text-align: center;
+  position: relative;
 }
 
 .find-your-road {
@@ -126,23 +129,12 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
 }
 
 .icon svg {
   width: 28px;
   height: 28px;
-}
-
-.check {
-  position: absolute;
-  top: -28px;
-  left: -26px;
-  background: #5F2DE6;
-  color: #FCFCFE;
-  border-radius: 50%;
-  padding: 4px;
-  width: 24px;
-  height: 24px;
 }
 
 .goal-card p {
@@ -176,184 +168,16 @@
 .space {
   height: 40px;
 }
-
-@font-face {
-    font-family: 'Vazirmatn';
-    src: url(../../font//Vazirmatn-VariableFont_wght.ttf);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.body {
-  direction: rtl;
-  font-family: 'Vazirmatn', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url(../../svg/Onbording/rahano-onboarding-background.svg);
-  background-size: cover;
-  padding: 40px 16px;
-}
-
-.goal-selector {
-  width: 100%;
-  max-width: 760px;
-  background: #FCFCFE;
-  border-radius: 28px;
-  padding: 48px 56px;
-  box-shadow: 0 20px 60px #5f2de624;
-  text-align: center;
-}
-
-.find-your-road {
-  color: #5F2DE6;
-  font-weight: 600;
-  font-size: 15px;
-  margin: 0 0 8px;
-}
-
-.whats-goal {
-  font-size: 28px;
-  font-weight: 800;
-  color: #0A0F23;
-  margin: 0 0 12px;
-}
-
-.say-goal {
-  color: #737891;
-  font-size: 15px;
-  margin: 0 0 32px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.goal-card {
-  grid-column: span 1;
-  background: #F9F7FD;
-  border: 2px solid transparent;
-  border-radius: 18px;
-  padding: 20px;
-  text-align: right;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.goal-card:hover {
-  border-color: #D7CCFB;
-  background: #F3F1FD;
-}
-
-.goal-card.selected {
-  background: #F3F1FD;
-  border-color: #5F2DE6;
-}
-
-.goal-card.disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-  position: relative;
-}
-
-.goal-card.disabled:hover {
-  border-color: transparent;
-  background: #F9F7FD;
-}
-
-.goal-card.disabled::after {
-  content: 'به‌زودی';
+.goalCard-check {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #4218C7;
-  color: #FCFCFE;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-  z-index: 2;
-}
-
-.goal-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  gap: 12px;
-  position: relative;
-}
-
-.goal-title h2 {
-  font-size: 17px;
-  font-weight: 700;
-  color: #0A0F23;
-  margin: 0;
-}
-
-.icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.check {
-  position: absolute;
-  top: -28px;
-  left: -26px;
+  top: 2px;
+  left: 3px;
   background: #5F2DE6;
   color: #FCFCFE;
   border-radius: 50%;
   padding: 4px;
   width: 24px;
   height: 24px;
-}
-
-.goal-card p {
-  margin: 10px 0 0;
-  color: #737891;
-  font-size: 13.5px;
-}
-
-.next {
-  grid-column: span 2;
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: radial-gradient(#5F2DE6, #4218C7);
-  color: #FCFCFE;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 16px;
-  border-radius: 16px;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.next:hover {
-  opacity: 0.9;
-}
-
-.space {
-  height: 40px;
 }
 
 /* responsive */
@@ -413,7 +237,7 @@
     font-size: 19px;
   }
 
-  .check {
+  .goalCard-check {
     left: -16px;
   }
 }

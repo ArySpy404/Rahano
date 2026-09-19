@@ -30,9 +30,9 @@
     background: #F3F1FD;
     border:2px solid #5F2DE6;
 }
-.check {
-  position: absolute;
-  top: 10px;
+.time-check {
+    position: absolute;
+  top: 20px;
   left: 10px;
   background: #5F2DE6;
   color: #FCFCFE;

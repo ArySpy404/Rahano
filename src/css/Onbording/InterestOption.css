@@ -1,0 +1,36 @@
+.interest-option {
+    background-color: #F9F7FD;
+    border-radius: 18px;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.interest-option span {
+    font-size: 22px;
+}
+.interest-option:hover {
+    border: 1px solid #D7CCFB;
+    background: #F3F1FD;
+}
+.interest-option.selected {
+    background: #F3F1FD;
+    border:2px solid #5F2DE6;
+}
+.interest-option:last-child {
+    grid-column: span 2;
+    justify-content: center;
+}
+.interest-check {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #5F2DE6;
+    color: #FCFCFE;
+    border-radius: 50%;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+}

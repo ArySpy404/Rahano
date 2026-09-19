@@ -5,12 +5,15 @@ import '../../css/Onbording/Onboarding.css';
 import { useState } from 'react';
 import Step2Body from './step2Body';
 import LearningTime from './LearningTime';
+import LearningModle from './LearningModle';
+import InterestSelector from './InterestSelector';
+import RoadmapGenerating from './RoadmapGenerating';
 
 export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps =5 ;
+  const totalSteps = 6 ;
   const handleNext = () => {
-    if(currentStep <= 4){
+    if(currentStep <= 5){
       setCurrentStep(currentStep + 1);
     } 
     
@@ -32,8 +35,11 @@ export default function Onboarding() {
       
     {currentStep === 1 && <GoalSelector onNext={handleNext} />}
 
-    {currentStep === 2 && <Step2Body  onNext={handleNext} onBack={handleBack}/>}
-    {currentStep === 3 && <LearningTime onNext={handleNext} onBack={handleBack}/>}
+    {currentStep === 2 && <InterestSelector onNext={handleNext} onBack={handleBack}/>}
+    {currentStep === 3 && <Step2Body  onNext={handleNext} onBack={handleBack}/>}
+    {currentStep === 4 && <LearningTime onNext={handleNext} onBack={handleBack}/>}
+    {currentStep === 5 && <LearningModle onNext={handleNext} onBack={handleBack}/>}
+    {currentStep === 6 && <RoadmapGenerating/>}
     </div>
     
   );

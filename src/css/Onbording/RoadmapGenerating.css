@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+
+.roadmap-generating {
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: 'Vazirmatn' , sans-serif;
+    background-color: #FCFCFE;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    box-shadow: 0 20px 60px #5f2de624;
+    border-radius: 18px;
+    padding: 40px;
+    margin: 60px auto;
+
+    display: flex;
+    flex-direction: column;
+}
+.logo-container {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 3px solid #F3F1FD;
+    border-top-color: #5F2DE6;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: spin 1s linear infinite;
+}
+
+.logo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5F2DE6;
+}
+.generate-text {
+    color: #737891;
+    text-align: center;
+    margin: auto 90px auto 90px;
+}
+.road-choises {
+    margin: auto 90px auto 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

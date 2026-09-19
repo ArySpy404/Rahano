@@ -1,0 +1,46 @@
+.learning-modal-card {
+    background-color: #F9F7FD;
+    border-radius: 18px;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.emoji {
+    background-color: #F3F1FD;
+    border-radius: 50%;
+    padding: 4px 6px 4px 6px;
+    font-size: 30px;
+    margin: 0;
+}
+.emoji.green {
+    background-color: #CFEA65;
+}
+.learning-modal-card h4 {
+    color: #0A0F23;
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+.learning-modal-card p {
+    color: #737891;
+    font-size: 15px;
+}
+.learning-modal-card:hover {
+    border: 1px solid #D7CCFB;
+    background: #F3F1FD;
+}
+.learning-modal-card.selected {
+    background: #F3F1FD;
+    border:2px solid #5F2DE6;
+}
+.Learning-check {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #5F2DE6;
+    color: #FCFCFE;
+    border-radius: 50%;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+}

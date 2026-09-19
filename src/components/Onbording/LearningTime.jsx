@@ -55,7 +55,8 @@ export default function LearningTime ({onNext , onBack}) {
 
             <div className="links">
                             <button className="back" onClick={onBack}>قبلی</button>
-                           <button className="next" onClick={onNext}>
+                           <button className="next" onClick={onNext}
+                           disabled = {!selectedTime}>
                             ادامه
                            <MoveLeft color='#FFFFFF'/>
                            </button>

@@ -14,10 +14,12 @@ export default function GoalCard ({title , description , comingSoon, selected , 
                        <HugeiconsIcon icon={icon} size={70} strokeWidth={0.9} color={accentColor || "#5F2DE6"}/> 
                     </div>
                     
-                    {selected && <Check className="check" size={17}/>}
+                    
                     </div>
                     
-                    <p>{description}</p>   
+                    <p>{description}</p> 
+
+                     {selected && <Check className="goalCard-check" size={17}/>} 
                 </div>
     )
 }

@@ -60,7 +60,8 @@ export default function GoalSelector ({onNext}) {
                 />
 
 
-                    <button className='next' onClick={onNext}>
+                    <button className='next' onClick={onNext}
+                    disabled= {!selectedGoal}>
                         ادامه
                     <MoveLeft color='#FFFFFF'/>
                     </button>
