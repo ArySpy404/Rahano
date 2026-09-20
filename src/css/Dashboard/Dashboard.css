@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.dashboard {
+    direction: rtl;
+    background: linear-gradient(180deg, #FCFCFE 0%, #e4ddf9 100%);
+    background-repeat: no-repeat;
+    background-position: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-inline: 16px;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.steps-title {
+    margin-right: 2vw;
+}

@@ -1,0 +1,25 @@
+.Road {
+    background: linear-gradient(135deg, #5F2DE6, #4218C7 100%);
+    color: #FCFCFE;
+    margin-block: clamp(20px, 6vw, 60px);
+    padding: clamp(16px, 4vw, 20px);
+    border-radius: 22px;
+    box-shadow: 0 20px 60px 30px #5f2de624;
+}
+
+.Road p {
+    font-weight: 500;
+}
+
+.plan {
+    margin-inline-start: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.rage-time {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px clamp(16px, 4vw, 40px);
+    align-items: center;
+}

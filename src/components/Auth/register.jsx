@@ -1,4 +1,5 @@
 import { HugeiconsIcon } from "@hugeicons/react";import { LockPasswordIcon, Mail } from '@hugeicons/core-free-icons';import Google from '../../svg/Auth/Google.svg';
+import { Link } from "react-router-dom";
 
 export default function Register (){
     return (
@@ -26,7 +27,7 @@ export default function Register (){
                     </div>
                     
 
-                    <button className='enter' type="submit">ثبت‌نام</button>
+                    <Link to='/dashboard' className='enter' type="submit">ثبت‌نام</Link>
                     <p>یا</p>
                     <button className='login-goole'> <img src={Google} alt="google" />
                         ثبت‌نام با گوگل

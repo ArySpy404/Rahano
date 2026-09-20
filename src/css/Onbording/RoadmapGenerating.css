@@ -1,24 +1,29 @@
 @font-face {
     font-family: 'Vazirmatn';
-    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf) format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
 }
 
 .roadmap-generating {
     box-sizing: border-box;
     direction: rtl;
-    font-family: 'Vazirmatn' , sans-serif;
+    font-family: 'Vazirmatn', sans-serif;
     background-color: #FCFCFE;
-    width: 100%;
-    max-width: 760px;
+
+    /* هیچ‌وقت از 760px بزرگ‌تر نمی‌شه و روی موبایل ۱۶px از هر طرف فاصله می‌گیره */
+    width: min(760px, 100% - 32px);
     height: auto;
+
     box-shadow: 0 20px 60px #5f2de624;
     border-radius: 18px;
-    padding: 40px;
-    margin: 60px auto;
+    padding: clamp(20px, 5vw, 40px);
+    margin: clamp(20px, 6vw, 60px) auto;
 
     display: flex;
     flex-direction: column;
 }
+
 .logo-container {
     position: relative;
     width: 70px;
@@ -49,23 +54,36 @@
     justify-content: center;
     color: #5F2DE6;
 }
+
 .generate-text {
     color: #737891;
     text-align: center;
-    margin: auto 90px auto 90px;
+    margin-inline: clamp(0px, 8vw, 90px);
 }
+
 .road-choises {
-    margin: auto 90px auto 90px;
+    margin-inline: clamp(0px, 8vw, 90px);
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+.generating-choise {
+    background-color: #fbfbfb;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 1px #5f2de624;
+}
+
+/* اجازه می‌ده متن‌های بلند بشکنن و از کادر بیرون نزنن */
+.generating-choise > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }

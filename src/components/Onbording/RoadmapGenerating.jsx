@@ -3,7 +3,6 @@ import GeneratingChoises from "./GeneratingChoises";
 import { Route} from "@hugeicons/core-free-icons";
 import '../../css/Onbording/RoadmapGenerating.css';
 
-
 export default function RoadmapGenerating () {
     return (
         <div className="roadmap-generating">
@@ -30,7 +29,6 @@ export default function RoadmapGenerating () {
                     <GeneratingChoises
                         text='آماده سازی داشبورد'
                     />
-
                 
             </div>
         </div>
