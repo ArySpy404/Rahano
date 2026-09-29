@@ -1,10 +1,8 @@
 import { MoveLeft } from 'lucide-react';
 import '../../css/Onbording/LearningModle.css';
 import LearningModleCard from './LearningModleCard';
-import { useState } from 'react';
 
-export default function LearningModle ({onNext , onBack}) {
-    const [selectedModle , setSelectedModle] = useState(null)
+export default function LearningModle ({onNext , onBack , learningModel , setLearningModel}) {
     return (
         <div className="learning-modle">
             <p className='first'>خب، یه چیز دیگه مونده...</p>
@@ -17,8 +15,8 @@ export default function LearningModle ({onNext , onBack}) {
                 way='با انجام دادن'
                 wayDtile='پروژه و تمرین عملی بیشتر.'
                 className='emoji'
-                onClick={() => {setSelectedModle('do')}}
-                selected={selectedModle === 'do'}
+                onClick={() => {setLearningModel('do')}}
+                selected={learningModel === 'do'}
             />
 
             <LearningModleCard
@@ -26,8 +24,8 @@ export default function LearningModle ({onNext , onBack}) {
                 way='قدم به قدم'
                 wayDtile='اول مفاهیم، بعد تمرین.'
                 className='emoji'
-                onClick={() => {setSelectedModle('stepBystep')}}
-                selected={selectedModle === 'stepBystep'}
+                onClick={() => {setLearningModel('stepBystep')}}
+                selected={learningModel === 'stepBystep'}
             />
 
             <LearningModleCard
@@ -35,23 +33,23 @@ export default function LearningModle ({onNext , onBack}) {
                 way='با حل مسئله'
                 wayDtile='چالش و مسئله بیشتر، توضیح کمتر.'
                 className='emoji'
-                onClick={() => {setSelectedModle('challenge')}}
-                selected={selectedModle === 'challenge'}
+                onClick={() => {setLearningModel('challenge')}}
+                selected={learningModel === 'challenge'}
             />
             <LearningModleCard
                 emoji='🎥'
                 way='ترکیبی'
                 wayDtile='ویدیو،مطالعه و تمرین در کنار هم.'
                 className='emoji green'
-                onClick={() => {setSelectedModle('mix')}}
-                selected={selectedModle === 'mix'}
+                onClick={() => {setLearningModel('mix')}}
+                selected={learningModel === 'mix'}
             />
             </div>
             
 
             <div className="links">
                             <button className="back" onClick={onBack}>قبلی</button>
-                           <button className="next" onClick={onNext}disabled={!selectedModle}>
+                           <button className="next" onClick={onNext}disabled={!learningModel}>
                             ادامه
                            <MoveLeft color='#FFFFFF'/>
                            

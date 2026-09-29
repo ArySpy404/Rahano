@@ -3,8 +3,7 @@ import '../../css/Onbording/step2Body.css';
 import { MoveLeft } from "lucide-react";
 import { useState } from "react";
 
-export default function Step2Body ({onNext , onBack }) {
-    const [selectedLevel , setSelectedLevel] = useState(null);
+export default function Step2Body ({onNext , onBack , level , setLevel}) {
     return (
         <div className="step-two-body">
                     <p className="lets-go">خب، بریم سراغ سطح فعلیت</p>
@@ -15,26 +14,26 @@ export default function Step2Body ({onNext , onBack }) {
                         <SkillLevelOption
                             range="کاملاً تازه‌کارم"
                             explain="هنوز شروع نکردم یا خیلی کم بلدم."
-                            selected={selectedLevel === "beginner"}
-                            onClick={ () => setSelectedLevel("beginner")}
+                            selected={level === "beginner"}
+                            onClick={ () => setLevel("beginner")}
                         />
                         <SkillLevelOption
                             range="یه چیزایی بلدم"
                             explain="مبانی رو می‌دونم ولی نیاز به مسیر منظم دارم."
-                            selected={selectedLevel === "some"}
-                            onClick={ () => setSelectedLevel("some")}
+                            selected={level === "some"}
+                            onClick={ () => setLevel("some")}
                         />
                         <SkillLevelOption
                             range="تجربه دارم"
                             explain="می‌خوام سطحمو ارتقاً بدم و تخصصی‌تر برم جلو."
-                            selected={selectedLevel === "experienced"}
-                            onClick={ () => setSelectedLevel("experienced")}
+                            selected={level === "experienced"}
+                            onClick={ () => setLevel("experienced")}
                         />
 
                         
                       <div className="links">
                             <button className="back" onClick={onBack}>قبلی</button>
-                           <button className="next" onClick={onNext} disabled = {selectedLevel === null}>
+                           <button className="next" onClick={onNext} disabled = {level === null}>
                             ادامه
                            <MoveLeft color='#FFFFFF'/>
                            </button>

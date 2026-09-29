@@ -1,12 +1,10 @@
 import { Target02Icon,Briefcase,Route02Icon,Sprout} from '@hugeicons/core-free-icons';
 import '../../css/Onbording/GoalSelector.css';
 import { MoveLeft } from 'lucide-react';
-import { useState } from 'react';
 import GoalCard from './Goalcard';
 
 
-export default function GoalSelector ({onNext}) {
-    const [selectedGoal , setSelectedGoal] =useState (null);
+export default function GoalSelector ({onNext ,goal, setGoal}) {
     return (
         <div className="body">
             <div className='goal-selector'>
@@ -18,8 +16,8 @@ export default function GoalSelector ({onNext}) {
                     icon={Target02Icon}
                     title="یادگیری یک مهارت"
                     description="یه چیز جدید یاد بگیرم"
-                    selected={selectedGoal === 'skill'}
-                    onClick={ () => {setSelectedGoal('skill')}}
+                    selected={goal === 'skill'}
+                    onClick={ () => {setGoal('skill')}}
                     accentBg="#D7CCFB"
                     accentColor="#4218C7"
                 />
@@ -28,8 +26,8 @@ export default function GoalSelector ({onNext}) {
                     icon={Briefcase}
                     title="پیدا کردن مسیر شغلی"
                     description="بفهمم چه کاری مناسب منه"
-                    selected={selectedGoal === 'job'}
-                    onClick={ () => {setSelectedGoal('job')}}
+                    selected={goal === 'job'}
+                    onClick={ () => {setGoal('job')}}
                     accentBg="#F3F1FD"
                     accentColor="#5F2DE6"
                     comingSoon
@@ -40,8 +38,8 @@ export default function GoalSelector ({onNext}) {
                     icon={Route02Icon}
                     title="تغییر مسیر"
                     description="می‌خوام مسیرم رو عوض کنم"
-                    selected={selectedGoal === 'change'}
-                    onClick={ () => {setSelectedGoal('change')}}
+                    selected={goal === 'change'}
+                    onClick={ () => {setGoal('change')}}
                     accentBg="#F9F7FD"
                     accentColor="#794EF8"
                     comingSoon
@@ -52,8 +50,8 @@ export default function GoalSelector ({onNext}) {
                     icon={Sprout}
                     title="رشد شخصی"
                     description="می‌خوام روی خودم کار کنم"
-                    selected={selectedGoal === 'self'}
-                    onClick={ () => {setSelectedGoal('self')}}
+                    selected={goal === 'self'}
+                    onClick={ () => {setGoal('self')}}
                     accentBg="#e8f5b2"
                     accentColor="#13d188"
                     comingSoon
@@ -61,7 +59,7 @@ export default function GoalSelector ({onNext}) {
 
 
                     <button className='next' onClick={onNext}
-                    disabled= {!selectedGoal}>
+                    disabled= {!goal}>
                         ادامه
                     <MoveLeft color='#FFFFFF'/>
                     </button>

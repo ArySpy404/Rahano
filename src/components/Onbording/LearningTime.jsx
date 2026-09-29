@@ -2,11 +2,9 @@ import { MoveLeft, TimerIcon } from "lucide-react";
 import TimeOption from "./TimeOptions";
 import { Clock, EnergyIcon, Hourglass } from "@hugeicons/core-free-icons";
 import '../../css/Onbording/LearningTime.css';
-import { useState } from "react";
 
 
-export default function LearningTime ({onNext , onBack}) {
-    const [selectedTime , setSelectedTime] = useState(null);
+export default function LearningTime ({onNext , onBack , learningTime , setLearningTime}) {
     return (
         <div className="learning-time">
             <div className="time-text">
@@ -23,32 +21,32 @@ export default function LearningTime ({onNext , onBack}) {
                 time="کمتر از 2 ساعت"
                 color='#794EF8'
                 className='option-icon'
-                onClick={() => {setSelectedTime('bit')}}
-                selected={selectedTime === 'bit'}
+                onClick={() => {setLearningTime('bit')}}
+                selected={learningTime === 'bit'}
             />
             <TimeOption
                 icon={Clock}
                 time="2 تا 5 ساعت"
                 color='#794EF8'
                 className='option-icon'
-                onClick={() => {setSelectedTime('mid')}}
-                selected={selectedTime === 'mid'}
+                onClick={() => {setLearningTime('mid')}}
+                selected={learningTime === 'mid'}
             />
             <TimeOption
                 icon={Clock}
                 time="5 تا 10 ساعت"
                 color='#794EF8'
                 className='option-icon'
-                onClick={() => {setSelectedTime('larg')}}
-                selected={selectedTime === 'larg'}
+                onClick={() => {setLearningTime('larg')}}
+                selected={learningTime === 'larg'}
             />
             <TimeOption
                 icon={EnergyIcon}
                 time="بیشتر از 10 ساعت"
                 color='#0A0F23'
                 className='option-icon-green'
-                onClick={() => {setSelectedTime('x-large')}}
-                selected={selectedTime === 'x-large'}
+                onClick={() => {setLearningTime('x-large')}}
+                selected={learningTime === 'x-large'}
             />  
             </div>
             
@@ -56,7 +54,7 @@ export default function LearningTime ({onNext , onBack}) {
             <div className="links">
                             <button className="back" onClick={onBack}>قبلی</button>
                            <button className="next" onClick={onNext}
-                           disabled = {!selectedTime}>
+                           disabled = {!learningTime}>
                             ادامه
                            <MoveLeft color='#FFFFFF'/>
                            </button>

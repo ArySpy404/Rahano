@@ -3,8 +3,7 @@ import { useState } from "react";
 import '../../css/Onbording/InterestSelector.css'
 import InterestOpton from "./InterestOption";
 
-export default function InterestSelector ({onNext , onBack}) {
-    const [selectedInterest , setSelectedInterest] = useState(null)
+export default function InterestSelector ({onNext , onBack , field ,setField}) {
     return (
         <div className="interest-selector">
             <div className="search-icon">
@@ -19,36 +18,36 @@ export default function InterestSelector ({onNext , onBack}) {
                 <InterestOpton
                 skillIcon='💻'
                 skillText='برنامه‌نویسی و تکنولوژی'
-                onClick={() => setSelectedInterest('tech')}
-                selected={selectedInterest ==='tech'}
+                onClick={() => setField('tech')}
+                selected={field ==='tech'}
             />
 
             <InterestOpton
                 skillIcon='🎨'
                 skillText='هنر و طراحی'
-                onClick={() => setSelectedInterest('art')}
-                selected={selectedInterest === 'art'}
+                onClick={() => setField('art')}
+                selected={field === 'art'}
             />
 
             <InterestOpton
                 skillIcon='🌐'
                 skillText='زبان'
-                onClick={() => setSelectedInterest('language')}
-                selected={selectedInterest === 'language'}
+                onClick={() => setField('language')}
+                selected={field === 'language'}
             />
 
             <InterestOpton
                 skillIcon='🧘'
                 skillText='مهارت‌های فردی'
-                onClick={() => setSelectedInterest('self')}
-                selected={selectedInterest === 'self'}
+                onClick={() => setField('self')}
+                selected={field === 'self'}
             />
 
             <InterestOpton
                 skillIcon='🎬'
                 skillText='تولید محتوا'
-                onClick={() => setSelectedInterest('contect')}
-                selected={selectedInterest === 'contect'}
+                onClick={() => setField('contect')}
+                selected={field === 'contect'}
             />
             </div>
             
@@ -56,7 +55,7 @@ export default function InterestSelector ({onNext , onBack}) {
 
             <div className="links">
                             <button className="back" onClick={onBack}>قبلی</button>
-                           <button className="next" onClick={onNext}disabled={!selectedInterest}>
+                           <button className="next" onClick={onNext}disabled={!field}>
                             ادامه
                            <MoveLeft color='#FFFFFF'/>
                            
