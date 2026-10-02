@@ -1,0 +1,41 @@
+.category {
+    background-color: #F9F7FD;
+    border-radius: 18px;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+}
+.category:hover{
+    border: 1px solid #D7CCFB;
+    background: #F3F1FD;
+}
+.category-icon {
+    padding: 10px;
+    background-color: #efe8fe;
+    border-radius: 8px;
+}
+.category-text {
+    color: #737891;
+    font-size: 14px;
+    margin: 0;
+}
+.category-title {
+    font-size: 18px;
+    margin-bottom:0 ;
+}
+.category-check {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #5F2DE6;
+    color: #FCFCFE;
+    border-radius: 50%;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+}
+.category.selected {
+    background: #F3F1FD;
+    border:2px solid #5F2DE6;
+}

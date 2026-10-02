@@ -1,0 +1,16 @@
+.art-desing {
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: 'Vazirmatn' , sans-serif;
+    background-color: #FCFCFE;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    box-shadow: 0 20px 60px #5f2de624;
+    border-radius: 18px;
+    padding: 40px;
+    margin: 60px auto;
+}
+.categories {
+    margin-bottom: 20px;
+}
