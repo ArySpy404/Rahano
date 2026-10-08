@@ -18,6 +18,23 @@ export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 7;
   const handleNext = () => {
+    if (currentStep === 6) {
+      console.log("STEP 6 → SENDING DATA", onboardingData);
+
+      fetch("http://localhost:3001/api/onboarding", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(onboardingData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('Server Respons:' , data);
+        });
+      console.log("STEP 6 → SENDING DATA", onboardingData);
+    }
+
     if (currentStep <= 5) {
       setCurrentStep(currentStep + 1);
     }

@@ -20,8 +20,8 @@ export default function ContectProdution({
           icon="📹"
           title="ساخت ویدیو"
           text="فیلم‌برداری و ساخت ویدیو برای یوتیوب و شبکه‌ها"
-          onclick={() => setCategory("")}
-          selected={category === ""}
+          onclick={() => setCategory("video")}
+          selected={category === "video"}
         />
 
         <Category
@@ -44,8 +44,8 @@ export default function ContectProdution({
           icon="✍️"
           title="نویسندگی"
           text="نوشتن مقاله، داستان و متن تبلیغاتی"
-          onclick={() => setCategory("writeing")}
-          selected={category === "writeing"}
+          onclick={() => setCategory("wirting")}
+          selected={category === "wirting"}
         />
 
         <Category

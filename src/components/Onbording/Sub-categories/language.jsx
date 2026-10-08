@@ -40,15 +40,15 @@ export default function Language({ onNext, onBack, category, setCategory }) {
         <Category
           icon="KO"
           title="کره‌ای"
-          onClick={() => setCategory("")}
-          selected={category === ""}
+          onClick={() => setCategory("korean")}
+          selected={category === "korean"}
         />
 
         <Category
           icon="ES"
           title="اسپانیایی"
-          onClick={() => setCategory("espanish")}
-          selected={category === "espanish"}
+          onClick={() => setCategory("spanish")}
+          selected={category === "spanish"}
         />
 
         <Category
