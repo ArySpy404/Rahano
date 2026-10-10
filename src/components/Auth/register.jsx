@@ -24,7 +24,7 @@ export default function Register() {
         email,
         password,
         repeatPassword,
-      }),
+      })
     })
       .then((res) => {
 

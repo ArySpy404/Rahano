@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const bcrypt = require("bcrypt")
 require("dotenv").config();
 const mongoose = require("mongoose");
 app.use(express.json());
@@ -47,14 +48,51 @@ app.post("/api/register", async (req, res) => {
     });
   }
 
+  const hashedPassword = await bcrypt.hash(password , 10);
+
+
   const newUser = await User.create({
     name,
     email,
-    password,
+    password: hashedPassword,
   });
 
-  res.json(newUser);
+  res.json({
+    name,
+    email
+  });
 });
+
+app.post("/api/login" , async (req , res) => {
+  const {email , password } = req.body ;
+
+  const user = await User.findOne({ email })
+
+  if (!user) {
+    return (
+      res.status(401).json({
+        email : "invalid credentials"
+      })
+    )
+  }
+
+  const isPasswordValid = await bcrypt.compare(password , user.password)
+
+  if (!isPasswordValid) {
+    return (
+      res.status(401).json({
+        password : "invalid credentials"
+      })
+    )
+  } else {
+    return (
+      res.json({
+        name : user.name,
+        email : user.email
+      })
+    )
+  }
+})
 
 mongoose
   .connect(process.env.MONGO_URI)
