@@ -1,8 +1,9 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LockPasswordIcon, Mail } from "@hugeicons/core-free-icons";
 import Google from "../../svg/Auth/Google.svg";
-import { useState } from "react";
-import '../../css/Auth/register.css';
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
+import "../../css/Auth/register.css";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,34 +21,41 @@ export default function Register() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         name,
         email,
         password,
         repeatPassword,
-      })
+        
+      }),
     })
       .then((res) => {
-
         return res.json().then((data) => {
-        return {
+          return {
             ok: res.ok,
-            data: data
-        }
+            data: data,
+          };
         });
       })
 
       .then((result) => {
         if (result.ok) {
-            setMessage("ثبت‌نام با موفقیت ایجاد شد")
+          setMessage("ثبت‌نام با موفقیت ایجاد شد");
+          navigate("/waitingPage");
         } else if (result.data.email) {
-            setMessage("ایمیلت تکراریه!")
+          setMessage("ایمیلت تکراریه!");
         } else if (result.data.repeatPassword) {
-            setMessage("رمزعبورت با تکرار رمز یکی نیست!")
+          setMessage("رمزعبورت با تکرار رمز یکی نیست!");
         } else {
-            setMessage("ثبت‌نام ناموفق بود")
+          setMessage("ثبت‌نام ناموفق بود");
         }
-      });
+      })
+        .catch((err) => {
+          console.log(err)
+          setMessage("نتونستیم با سرور ارتباط بگیریم!")
+        })
+      
   };
 
   return (

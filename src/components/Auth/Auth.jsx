@@ -1,5 +1,6 @@
 import Login from '../Auth/Login';
 import Register from '../Auth/register';
+import WaitingPage from './Waiting-page';
 import '../../css/Auth/Auth.css';
 import { useState } from 'react';
 
