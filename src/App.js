@@ -5,11 +5,13 @@ import Onboarding from './components/Onbording/OnBording';
 import Auth from './components/Auth/Auth';
 import Dashboard from './components/Dashboard/Dashboard';
 import WaitingPage from './components/Auth/Waiting-page';
+import { AuthProvider } from './components/Onbording/AuthCheck';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path='/onboarding' element={<Onboarding/>}/>
@@ -20,9 +22,11 @@ function App() {
       
         
       </BrowserRouter>
+      </AuthProvider>
+      </div>
       
 
-    </div>
+    
   );
 }
 

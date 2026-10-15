@@ -2,12 +2,16 @@ import Google from "../../svg/Auth/Google.svg";
 import "../../css/Auth/Login.css";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LockPasswordIcon, Mail } from "@hugeicons/core-free-icons";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Onbording/AuthCheck";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +37,11 @@ export default function Login() {
       })
       .then((result) => {
         if (result.ok) {
+          setUser(result.data);
           setMessage("با موفقیت ورود کردی");
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 1500);
         } else if (result.data.email) {
           setMessage("حساب کاربری‌با این ایمیل وجود نداره!");
         } else if (result.data.password) {
@@ -43,16 +51,15 @@ export default function Login() {
         }
       })
       .catch((err) => {
-        setMessage("نتونستیم با سرور ارتباط برقرار کنیم!")
+        setMessage("نتونستیم با سرور ارتباط برقرار کنیم!");
         console.error(err);
       });
   };
 
   return (
     <div className="Login">
+      {message && <p className="res-message">{message}</p>}
 
-        {message && <p className="res-message">{message}</p>}
-        
       <div className="form">
         <form className="form" onSubmit={handleSubmit}>
           <label>ایمیل</label>
@@ -63,7 +70,11 @@ export default function Login() {
               className="auth-icon"
               size={22}
             />
-            <input type="email" placeholder="rahano@gmail.com"  onChange={(e) => setEmail(e.target.value)}/>
+            <input
+              type="email"
+              placeholder="rahano@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <label>رمز عبور</label>
@@ -77,7 +88,8 @@ export default function Login() {
             <input
               type="password"
               placeholder="حداقل 8 کاراکتر. از حروف و اعدادانگلیسی و نمادها استفاده کنید"
-             onChange={(e) => setPassword(e.target.value)}/>
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           <button className="enter" type="submit">

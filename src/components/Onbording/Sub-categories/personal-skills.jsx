@@ -51,7 +51,7 @@ export default function PersonalSkills ({onNext , onBack , category , setCategor
 
                 <Category
                     icon='💰'
-                    title='مدیریت مالی و شخصی'
+                    title='مدیریت مالی'
                     text='مدیریت پول و تصمیم‌های مالی ساده'
                     onClick={() => setCategory('financial')}
                     selected={category === 'financial'}

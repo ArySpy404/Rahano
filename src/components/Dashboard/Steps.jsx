@@ -7,7 +7,7 @@ export default function Steps({ steps }) {
             {steps.map((step) => (
                 <div key={step.id} className={`step ${step.status}`}>
                     <div className={`num-icon ${step.status}`}>
-                        {step.status === "completed" ? <Check className="num-check"/> : step.id}
+                        {step.status === "completed" ? <Check className="num-check"/> : step.number}
                     </div>
 
                     {step.title}

@@ -26,6 +26,7 @@ export default function Onboarding() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(onboardingData),
       })
         .then((res) => res.json())
@@ -35,7 +36,7 @@ export default function Onboarding() {
       console.log("STEP 6 → SENDING DATA", onboardingData);
     }
 
-    if (currentStep <= 5) {
+    if (currentStep <= 7) {
       setCurrentStep(currentStep + 1);
     }
   };
