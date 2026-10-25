@@ -1,16 +1,15 @@
-import '../../css/Dashboard/Progress.css';
+import "../../css/Dashboard/Progress.css";
 
-export default function Progress ({currentStep , totalSteps}) {
-    const progress = (currentStep / totalSteps) * 100;
-    return (
-        <div className="progress">
-            <div className="progress-bar"
-            style={{
-                width : `${progress}%`
-            }}
-            >
-
-            </div>
-        </div>
-    )
+export default function Progress({ currentStep, totalSteps }) {
+  const progress = totalSteps === 0 ? 0 : (currentStep / totalSteps) * 100;
+  return (
+    <div className="progress">
+      <div
+        className="progress-bar"
+        style={{
+          width: `${progress}%`,
+        }}
+      ></div>
+    </div>
+  );
 }

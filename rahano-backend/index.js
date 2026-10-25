@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 app.use(express.json());
 const Onboarding = require("./src/models/Onboarding");
 const cors = require("cors");
+const cloudflareUrl = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/run/@cf/google/gemma-4-26b-a4b-it`;
+const Roadmap = require("./src/models/Roadmap");
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -28,32 +31,6 @@ app.use(
   }),
 );
 
-app.post("/api/rahano-ai", async (req, res) => {
-  const body = req.body;
-  const message = body.message;
-
-  const response = await fetch(
-    "https://api.groq.com/openai/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
-        messages: [
-          {
-            role: "user",
-            content: message,
-          },
-        ],
-      }),
-    },
-  );
-  const data= await response.json()
-});
-
 app.post("/api/onboarding", (req, res) => {
   if (!req.session.userId) {
     return res.status(401).json({
@@ -67,7 +44,6 @@ app.post("/api/onboarding", (req, res) => {
   )
 
     .then((result) => {
-      console.log("Update onboarding", result);
       res.json(result);
     })
     .catch((err) => {
@@ -234,6 +210,334 @@ app.post("/api/logout", (req, res) => {
       });
     }
   });
+});
+
+app.post("/api/roadmap", async (req, res) => {
+  let ParseAIanswer;
+  try {
+    if (!req.session.userId) {
+      return res.status(401).json({
+        error: "Unauthorized",
+      });
+    }
+
+    let onboardingData;
+    try {
+      onboardingData = await Onboarding.findOne({
+        user: req.session.userId,
+      });
+      if (!onboardingData) {
+        return res.status(404).json({
+          error: "Data Not Found",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+
+    try {
+      const existingRoadmap = await Roadmap.findOne({
+        user: req.session.userId,
+      });
+
+      if (existingRoadmap) {
+        return res.status(409).json({
+          error: "Roadmap already exists",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+
+    const prompt = `
+بر اساس اطلاعات زیر، یک نقشه راه یادگیری شخصی‌سازی‌شده بساز.
+
+اطلاعات کاربر:
+${JSON.stringify(onboardingData)}
+
+قوانین خروجی:
+1. خروجی باید فقط یک JSON معتبر باشد.
+2. هیچ متن اضافه، توضیح، یا Markdown خارج از JSON ننویس.
+3. خروجی باید یک آبجکت با کلید phases باشد.
+4. phases باید آرایه‌ای از فازهای یادگیری باشد.
+5. هر فاز باید شامل فیلدهای زیر باشد:
+   - title: عنوان فاز به صورت رشته
+   - description: توضیحات فاز به صورت رشته
+   - exercises: آرایه‌ای از رشته‌ها شامل تمرین‌های عملی
+   - completionStatus: مقدار بولی false
+6. تعداد فازها و تمرین‌ها را متناسب با سطح، زمان و هدف کاربر تعیین کن.
+7. فازها را به ترتیب منطقی از مباحث پایه تا مباحث پیشرفته تنظیم کن.
+8. تمرین‌ها باید عملی، مشخص و متناسب با محتوای همان فاز باشند.
+9. تمام متن‌های داخل JSON باید به زبان فارسی باشند، به‌جز اصطلاحات تخصصی که ترجمه آن‌ها مناسب نیست.
+
+ساختار مورد انتظار:
+{
+  "phases": [
+    {
+      "title": "عنوان فاز",
+      "description": "توضیحات فاز",
+      "exercises": ["تمرین اول", "تمرین دوم"],
+      "completionStatus": false
+    }
+  ]
+}
+`;
+
+    try {
+      const AIModel = await fetch(cloudflareUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
+        },
+        body: JSON.stringify({
+          model: "gemma-4-26b-a4b-it",
+          messages: [
+            {
+              role: "system",
+              content: "تو دستیار ساخت یادگیری رهانو هستی.",
+            },
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+        }),
+      });
+      if (AIModel.status === 401 || AIModel.status === 403) {
+        console.error("Cloudflare AI authentication failed:", AIModel.status);
+
+        return res.status(502).json({
+          error: "AI service unavailable",
+        });
+      } else if (AIModel.status === 429) {
+        return res.status(429).json({
+          error: "AI service is busy",
+        });
+      } else if (AIModel.ok) {
+        const Answer = await AIModel.json();
+
+        if (
+          Answer.result &&
+          Answer.result.choices &&
+          Array.isArray(Answer.result.choices) &&
+          Answer.result.choices.length &&
+          Answer.result.choices[0].message &&
+          typeof Answer.result.choices[0].message.content === "string"
+        ) {
+          const AIanswer = Answer.result.choices[0].message.content;
+
+          try {
+            ParseAIanswer = JSON.parse(AIanswer);
+          } catch (err) {
+            console.error(err);
+            return res.status(502).json({
+              error: "Invalid response from AI service",
+            });
+          }
+        } else {
+          return res.status(502).json({
+            error: "Invalid response from AI service",
+          });
+        }
+        if (
+          !(
+            typeof ParseAIanswer === "object" &&
+            ParseAIanswer !== null &&
+            !Array.isArray(ParseAIanswer) &&
+            Array.isArray(ParseAIanswer.phases) &&
+            Object.keys(ParseAIanswer).length === 1 &&
+            Object.keys(ParseAIanswer).includes("phases") &&
+            ParseAIanswer.phases.length > 0 &&
+            ParseAIanswer.phases.length <= 20 &&
+            ParseAIanswer.phases.every(
+              (phase) =>
+                phase !== null &&
+                typeof phase === "object" &&
+                !Array.isArray(phase) &&
+                typeof phase.title === "string" &&
+                phase.title.trim().length > 0 &&
+                phase.title.length <= 100 &&
+                typeof phase.description === "string" &&
+                phase.description.trim().length > 0 &&
+                phase.description.length <= 600 &&
+                Array.isArray(phase.exercises) &&
+                phase.exercises.every(
+                  (exercise) =>
+                    typeof exercise === "string" &&
+                    exercise.trim().length > 0 &&
+                    exercise.length <= 500,
+                ) &&
+                phase.exercises.length > 0 &&
+                phase.exercises.length <= 10 &&
+                typeof phase.completionStatus === "boolean",
+            )
+          )
+        ) {
+          return res.status(502).json({
+            error: "Invalid response from AI service",
+          });
+        }
+      } else {
+        console.error("AI service request failed:", AIModel.status);
+
+        return res.status(502).json({
+          error: "AI service unavailable",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      return res.status(502).json({
+        error: "Invalid response from AI service",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+
+  try {
+    if (!ParseAIanswer) {
+      return res.status(502).json({
+        error: "Invalid response from AI service",
+      });
+    }
+
+    const saveRoadmap = await Roadmap.create({
+      user: req.session.userId,
+
+      phases: ParseAIanswer.phases,
+    });
+    return res.json({
+      saveRoadmap,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+});
+
+app.post("/api/rahano-ai", async (req, res) => {
+  try {
+    if (!req.body || typeof req.body !== "object" || Array.isArray(req.body)) {
+      return res.status(400).json({
+        error: "Request body must be a valid JSON object",
+      });
+    }
+    const message = req.body?.message;
+
+    if (typeof message !== "string" || message.trim() === "") {
+      return res.status(400).json({
+        error: "message should be a String",
+      });
+    }
+    
+    const response = await fetch(
+      "https://api.cloudflare.com/client/v4/accounts/7ab089674e4908d053be24be1c25a6fd/ai/run/@cf/google/gemma-4-26b-a4b-it",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
+        },
+        body: JSON.stringify({
+          model: "gemma-4-26b-a4b-it",
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are the assistant for creating Rahano learning paths.Build a learning path based on the information provided by the user.Make the learning path realistic and adapt it to the user's current skill level and available learning time.",
+            },
+            {
+              role: "user",
+              content: message,
+            },
+          ],
+        }),
+      },
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(JSON.stringify(data, null, 2));
+      if (
+        data.result &&
+        data.result.choices &&
+        Array.isArray(data.result.choices) &&
+        data.result.choices.length &&
+        data.result.choices[0].message &&
+        typeof data.result.choices[0].message.content === "string"
+      ) {
+        const AIResponse = data.result.choices[0].message.content;
+
+        return res.json({
+          answer: AIResponse,
+        });
+      } else {
+        return res.status(502).json({
+          error: "Invalid response from AI service",
+        });
+      }
+    } else if (response.status === 401) {
+      const errorData = await response.json().catch(() => null);
+
+      console.error("status:", JSON.stringify(errorData, null, 2));
+      return res.status(401).json({
+        error: "Unauthorized",
+      });
+    } else if (response.status === 429) {
+      return res.status(429).json({
+        error: "Too many requests",
+      });
+    } else if (!response.ok) {
+      const errorData = await response.json();
+      console.log("status:", errorData);
+      return res.status(response.status).json({
+        error: "Response is Not Successfull",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      err: "Internal Server Error",
+    });
+  }
+});
+
+app.get("/api/roadmap", async (req, res) => {
+  try {
+    if (!req.session.userId) {
+      return res.status(401).json({
+        error: "Unauthorized",
+      });
+    }
+    const findRoadmap = await Roadmap.findOne({
+      user: req.session.userId,
+    });
+    if (!findRoadmap) {
+      return res.status(404).json({
+        error: "Not Found",
+      });
+    }
+    return res.json({
+      phases: findRoadmap.phases,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
 });
 
 app.listen(3001, () => {

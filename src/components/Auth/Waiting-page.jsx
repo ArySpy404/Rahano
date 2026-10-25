@@ -9,7 +9,7 @@ export default function WaitingPage () {
     const navigate = useNavigate();
     useEffect(() => {
             const timer = setTimeout(() => {
-              navigate("/onboarding", { replace: true });
+              navigate("/Auth", { replace: true });
             }, 2000);
 
             return () => clearTimeout(timer);

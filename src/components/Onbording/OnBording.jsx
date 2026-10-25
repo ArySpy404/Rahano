@@ -17,22 +17,24 @@ import ContentProduction from "./Sub-categories/Contect-Production";
 export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 7;
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentStep === 6) {
       console.log("STEP 6 → SENDING DATA", onboardingData);
 
-      fetch("http://localhost:3001/api/onboarding", {
+      const res = await fetch("http://localhost:3001/api/onboarding", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         credentials: "include",
         body: JSON.stringify(onboardingData),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log('Server Respons:' , data);
-        });
+      });
+      if (!res.ok) {
+        console.error("Onboarding failed:", res.status);
+        return;
+      }
+      const data = await res.json();
+      console.log("Server Response:" , data);
       console.log("STEP 6 → SENDING DATA", onboardingData);
     }
 

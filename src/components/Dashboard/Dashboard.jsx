@@ -5,9 +5,18 @@ import "../../css/Dashboard/Dashboard.css";
 import { useContext, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../Onbording/AuthCheck";
-import { DisplayValueCategory , DisplayValueLearningModel, DisplayValueLearningTime, DisplayValueLevel } from "./DisplayValue";
+import {
+  DisplayValueCategory,
+  DisplayValueLearningModel,
+  DisplayValueLearningTime,
+  DisplayValueLevel,
+} from "./DisplayValue";
 
 export default function Dashboard() {
+    const [phases, setPhases] = useState([]);
+    const [data, setData] = useState({});
+    const { user, loading } = useContext(AuthContext);
+
   useEffect(() => {
     async function FetchOnboarding() {
       try {
@@ -19,7 +28,6 @@ export default function Dashboard() {
           const result = await roadData.json();
           setData(result);
         } else {
-          console.log(roadData.status)
           console.log(roadData.status);
         }
       } catch (err) {
@@ -28,23 +36,48 @@ export default function Dashboard() {
     }
     FetchOnboarding();
   }, []);
-  const [data, setData] = useState({});
-  const { user, loading } = useContext(AuthContext);
+
+  useEffect(() => {
+    async function FetchRoadmap() {
+      try {
+        const Roadmap = await fetch("http://localhost:3001/api/roadmap", {
+          method: "GET",
+          credentials: "include",
+        });
+        if (Roadmap.ok) {
+          const result = await Roadmap.json();
+          setPhases(result.phases);
+        } else {
+          console.log(Roadmap.status);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    FetchRoadmap();
+  }, []);
+
+  
   if (loading === true) {
     return <p>در حال بررسی ورود...</p>;
   }
   if (!user) {
     return <Navigate to="/Auth" replace />;
   }
+  const currentIndex = phases.findIndex(
+    (phase) => !phase.completionStatus
+  )
   const roadmap = {
     title: DisplayValueCategory[data.category],
     level: DisplayValueLevel[data.level],
     hoursPerWeek: DisplayValueLearningTime[data.learningTime],
-    steps: [
-      { id: data._id, title: DisplayValueCategory[data.category], status: "completed" },
-      { id: data._id, title: DisplayValueCategory[data.category], status: "current" },
-      { id: data._id, title: DisplayValueCategory[data.category], status: "locked" },
-    ],
+    steps: 
+      phases.map((phase , index) => ({
+        id: phase._id,
+        number: phase.phaseNumber,
+        title: phase.title,
+        status: phase.completionStatus ? "completed" : index === currentIndex ? "current" : "locked",
+      }))
   };
 
   const completedCount = roadmap.steps.filter(
