@@ -20,3 +20,79 @@
 .steps-title {
     margin-right: 2vw;
 }
+
+.no-roadmap-detail,
+.roadmap-error-detail {
+  color: #171b2d;
+  font-family: "Vazirmatn", sans-serif;
+  direction: rtl;
+  background-color: #FCFCFE;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  box-shadow: 0 20px 60px #5f2de624;
+  border-radius: 18px;
+  padding: 40px;
+  margin: 60px auto;
+}
+
+.no-roadmap,
+.roadmap-error,
+.auth-loading {
+  background: url(../../svg/Onbording/rahano-onboarding-background.svg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: #171b2d;
+  font-family: "Vazirmatn", sans-serif;
+}
+
+.no-roadmap h1,
+.roadmap-error h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.no-roadmap p,
+.roadmap-error p {
+  color: #5f6473;
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+
+.no-roadmap button,
+.roadmap-error button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  background: #5b35f5;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.no-roadmap button:hover,
+.roadmap-error button:hover {
+  background: #4824dc;
+  transform: translateY(-2px);
+}
+
+.no-roadmap button:focus-visible,
+.roadmap-error button:focus-visible {
+  outline: 3px solid #d7ccfb;
+  outline-offset: 3px;
+}
+
+.auth-loading {
+  color: #5f6473;
+  font-size: 0.95rem;
+}

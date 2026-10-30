@@ -1,5 +1,17 @@
 const mongoose = require("mongoose");
 
+const ExercisesSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    maxlength: 500,
+  },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const PhaseSchema = new mongoose.Schema({
   // phaseNumber: {
   //   type: Number,
@@ -21,8 +33,9 @@ const PhaseSchema = new mongoose.Schema({
     required: true,
     maxlength: 600,
   },
+
   exercises: {
-    type: [String],
+    type: [ExercisesSchema],
     required: true,
     validate: {
       validator: function (value) {
@@ -32,9 +45,9 @@ const PhaseSchema = new mongoose.Schema({
           value.length <= 10 &&
           value.every(
             (exercise) =>
-              typeof exercise === "string" &&
-              exercise.trim().length > 0 &&
-              exercise.length <= 500,
+              typeof exercise.title === "string" &&
+              exercise.title.trim().length > 0 &&
+              exercise.title.length <= 500,
           )
         );
       },
@@ -63,7 +76,8 @@ const RoadmapSchema = new mongoose.Schema({
       validator: function (value) {
         return Array.isArray(value) && value.length > 0 && value.length <= 20;
       },
-      message: "Each value should be an array and must have between 1 and 10 non-empty exercises."
+      message:
+        "Each value should be an array and must have between 1 and 10 non-empty exercises.",
     },
   },
 });

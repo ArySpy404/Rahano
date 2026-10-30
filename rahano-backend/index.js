@@ -269,7 +269,7 @@ ${JSON.stringify(onboardingData)}
 5. هر فاز باید شامل فیلدهای زیر باشد:
    - title: عنوان فاز به صورت رشته
    - description: توضیحات فاز به صورت رشته
-   - exercises: آرایه‌ای از رشته‌ها شامل تمرین‌های عملی
+   - exercises: آرایه‌ای از آبجکت‌های تمرین که هرکدام شامل title (رشته) و completed (مقدار بولی false) هستند.
    - completionStatus: مقدار بولی false
 6. تعداد فازها و تمرین‌ها را متناسب با سطح، زمان و هدف کاربر تعیین کن.
 7. فازها را به ترتیب منطقی از مباحث پایه تا مباحث پیشرفته تنظیم کن.
@@ -282,7 +282,10 @@ ${JSON.stringify(onboardingData)}
     {
       "title": "عنوان فاز",
       "description": "توضیحات فاز",
-      "exercises": ["تمرین اول", "تمرین دوم"],
+      "exercises":  [
+  { "title": "تمرین اول", "completed": false },
+  { "title": "تمرین دوم", "completed": false }
+],
       "completionStatus": false
     }
   ]
@@ -370,9 +373,15 @@ ${JSON.stringify(onboardingData)}
                 Array.isArray(phase.exercises) &&
                 phase.exercises.every(
                   (exercise) =>
-                    typeof exercise === "string" &&
-                    exercise.trim().length > 0 &&
-                    exercise.length <= 500,
+                    exercise !== null &&
+                    typeof exercise === "object" &&
+                    !Array.isArray(exercise) &&
+                    typeof exercise.title === "string" &&
+                    exercise.title.trim().length > 0 &&
+                    exercise.title.length <= 500 &&
+                    Object.keys(exercise).length === 2 &&
+                    Object.keys(exercise).includes("title") &&
+                    Object.keys(exercise).includes("completed"),
                 ) &&
                 phase.exercises.length > 0 &&
                 phase.exercises.length <= 10 &&
@@ -441,7 +450,7 @@ app.post("/api/rahano-ai", async (req, res) => {
         error: "message should be a String",
       });
     }
-    
+
     const response = await fetch(
       "https://api.cloudflare.com/client/v4/accounts/7ab089674e4908d053be24be1c25a6fd/ai/run/@cf/google/gemma-4-26b-a4b-it",
       {
@@ -534,6 +543,79 @@ app.get("/api/roadmap", async (req, res) => {
     });
   } catch (err) {
     console.error(err);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+});
+
+app.patch("/api/roadmap/exercises/:exerciseId", async (req, res) => {
+  try {
+    if (!req.session.userId) {
+      return res.status(401).json({
+        error: "Unauthorized",
+      });
+    }
+
+    const { completed } = req.body ?? {};
+
+    if (typeof completed !== "boolean") {
+      return res.status(400).json({
+        error: "Invalid completed value. Expected a boolean.",
+      });
+    }
+
+    const { exerciseId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(exerciseId)) {
+      return res.status(400).json({
+        error: "Invalid exercise ID",
+      });
+    }
+
+    const findRoadmap = await Roadmap.findOne({
+      user: req.session.userId,
+    });
+
+    if (findRoadmap === null) {
+      return res.status(404).json({
+        error: "Roadmap Not Found",
+      });
+    }
+
+    const targetPhase = findRoadmap.phases.find((phase) => {
+      return phase.exercises.find(
+        (exercise) => exercise._id.toString() === exerciseId,
+      );
+    });
+
+    const targetExercise = targetPhase?.exercises.find(
+      (exercise) => exercise._id.toString() === exerciseId,
+    );
+
+    if (!targetExercise) {
+      return res.status(404).json({
+        error: "Exercise Not Found",
+      });
+    }
+
+    targetExercise.completed = completed;
+
+    const isPhaseCompleted = targetPhase.exercises.every(
+      (exercise) => exercise.completed === true,
+    );
+
+    targetPhase.completionStatus = isPhaseCompleted;
+
+    await findRoadmap.save();
+
+    return res.json({
+      exerciseId: targetExercise._id,
+      completed: targetExercise.completed,
+    });
+  } catch (err) {
+    console.error(err);
+
     return res.status(500).json({
       error: "Internal Server Error",
     });
