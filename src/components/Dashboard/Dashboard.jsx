@@ -69,7 +69,11 @@ export default function Dashboard() {
   }, [FetchRoadmap]);
 
   if (loading === true) {
-    return <p>در حال بررسی ورود...</p>;
+    return (
+      <div className="auth-check">
+        <p>در حال بررسی ورود...</p>
+      </div>
+    );
   }
   if (!user) {
     return <Navigate to="/Auth" replace />;

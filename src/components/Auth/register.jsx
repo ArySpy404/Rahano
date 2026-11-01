@@ -1,7 +1,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { LockPasswordIcon, Mail } from "@hugeicons/core-free-icons";
 import Google from "../../svg/Auth/Google.svg";
-import { useState} from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/Auth/register.css";
 
@@ -27,7 +27,6 @@ export default function Register() {
         email,
         password,
         repeatPassword,
-        
       }),
     })
       .then((res) => {
@@ -51,11 +50,10 @@ export default function Register() {
           setMessage("ثبت‌نام ناموفق بود");
         }
       })
-        .catch((err) => {
-          console.log(err)
-          setMessage("نتونستیم با سرور ارتباط بگیریم!")
-        })
-      
+      .catch((err) => {
+        console.log(err);
+        setMessage("نتونستیم با سرور ارتباط بگیریم!");
+      });
   };
 
   return (
