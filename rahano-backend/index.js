@@ -3,6 +3,7 @@ const app = express();
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo").default;
 app.use(express.json());
 const Onboarding = require("./src/models/Onboarding");
 const cors = require("cors");
@@ -28,6 +29,10 @@ app.use(
       sameSite: "lax",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URL,
+      collectionName: "session",
+    }),
   }),
 );
 
@@ -153,14 +158,22 @@ app.post("/api/login", async (req, res) => {
     });
   }
 
-  req.session.userId = user._id.toString();
-
-  req.session.save((err) => {
+  req.session.regenerate((err) => {
     if (err) {
       return res.status(500).json({
         error: "session error",
       });
     }
+
+    req.session.userId = user._id.toString();
+
+    req.session.save((err) => {
+      if (err) {
+        return res.status(500).json({
+          error: "session error",
+        });
+      }
+    });
 
     return res.json({
       name: user.name,
@@ -626,7 +639,7 @@ app.listen(3001, () => {
   console.log("backend is running");
 });
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("connected");
   })
