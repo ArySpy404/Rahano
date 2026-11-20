@@ -12,11 +12,13 @@
   "type": "commonjs",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "canvas-confetti": "^1.9.4",
     "connect-mongo": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^18.0.5",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
-    "mongoose": "^9.10.3"
+    "mongoose": "^9.10.3",
+    "multer": "^2.5.0"
   }
 }

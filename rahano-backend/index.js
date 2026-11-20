@@ -9,6 +9,10 @@ const Onboarding = require("./src/models/Onboarding");
 const cors = require("cors");
 const cloudflareUrl = `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/run/@cf/google/gemma-4-26b-a4b-it`;
 const Roadmap = require("./src/models/Roadmap");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs/promises");
+const crypto = require("crypto");
 
 app.use(
   cors({
@@ -35,6 +39,35 @@ app.use(
     }),
   }),
 );
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "./uploads/profiles"));
+  },
+  filename: (req, file, cb) => {
+    const uniqueName = crypto.randomUUID();
+    const extension = path.extname(file.originalname);
+    const finalName = uniqueName + extension;
+    cb(null, finalName);
+  },
+});
+const upload = multer({
+  storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedFormats = ["image/jpeg", "image/png", "image/webp"];
+    const isAllowedFormat = allowedFormats.includes(file.mimetype);
+    if (isAllowedFormat === true) {
+      cb(null, true);
+    } else {
+      cb(new Error("Invalid file format"));
+    }
+  },
+});
 
 app.post("/api/onboarding", (req, res) => {
   if (!req.session.userId) {
@@ -133,53 +166,50 @@ app.post("/api/register", async (req, res) => {
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
-  let user;
-  let isPasswordValid;
 
   try {
-    user = await User.findOne({ email });
+    const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(401).json({
         email: "invalid credentials",
       });
     }
 
-    isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
     if (!isPasswordValid) {
       return res.status(401).json({
         password: "invalid credentials",
+      });
+    }
+
+    user.lastLogin = new Date();
+    await user.save();
+
+    req.session.userId = user._id.toString();
+
+    try {
+      req.session.save();
+
+      return res.json({
+        name: user.name,
+        email: user.email,
+      });
+    } catch (err) {
+      console.error(err);
+
+      return res.status(500).json({
+        error: "session error",
       });
     }
   } catch (err) {
     console.error(err);
 
     return res.status(500).json({
-      error: "Internal sever error",
+      error: "Internal server error",
     });
   }
-
-  req.session.regenerate((err) => {
-    if (err) {
-      return res.status(500).json({
-        error: "session error",
-      });
-    }
-
-    req.session.userId = user._id.toString();
-
-    req.session.save((err) => {
-      if (err) {
-        return res.status(500).json({
-          error: "session error",
-        });
-      }
-    });
-
-    return res.json({
-      name: user.name,
-      email: user.email,
-    });
-  });
 });
 
 app.get("/api/me", async (req, res) => {
@@ -191,6 +221,9 @@ app.get("/api/me", async (req, res) => {
         return res.json({
           name: findUserId.name,
           email: findUserId.email,
+          profileImg: findUserId.profileImage,
+          lastLogin: findUserId.lastLogin,
+          status: findUserId.status,
         });
       } else {
         return res.status(401).json({
@@ -634,6 +667,203 @@ app.patch("/api/roadmap/exercises/:exerciseId", async (req, res) => {
     });
   }
 });
+
+app.delete("/api/me", async (req, res) => {
+  try {
+    if (!req.session.userId) {
+      return res.status(401).json({
+        error: "Unauthorized",
+      });
+    }
+    const user = await User.findById(req.session.userId);
+
+    if (!user) {
+      return res.status(404).json({
+        error: "User Not Found",
+      });
+    } else {
+      await Roadmap.deleteMany({
+        user: user._id,
+      });
+      await Onboarding.deleteMany({
+        user: user._id,
+      });
+      await User.findByIdAndDelete(req.session.userId);
+
+      req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).json({
+            error: "Internal Server Error",
+          });
+        } else {
+          return res.status(200).json({
+            message: "حساب کاربری با موفقیت حذف شد",
+          });
+        }
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      error: "Internal Server Error",
+    });
+  }
+});
+
+function isAuthenticated(req, res, next) {
+  console.log("AUTH CHECK:", req.session.userId);
+  if (!req.session.userId) {
+    return res.status(401).json({
+      error: "Unauthorized",
+    });
+  }
+
+  next();
+}
+
+function profileUploadError(err, req, res, next) {
+  if (!err) return next();
+
+  if (err instanceof multer.MulterError) {
+    return res.status(400).json({
+      error:
+        err.code === "LIMIT_FILE_SIZE" ? "File Too Large" : "File Upload Error",
+    });
+  }
+
+  if (
+    err.message === "Invalid file format" ||
+    err.message === "Invalid Image Content"
+  ) {
+    return res.status(400).json({
+      error: "Invalid File Format",
+    });
+  }
+
+  return res.status(500).json({
+    error: "Internal Server Error",
+  });
+}
+
+async function validateImgContent(req, res, next) {
+  try {
+    if (!req.file) {
+      return next();
+    }
+
+    const { fileTypeFromFile } = await import("file-type");
+
+    const detectedType = await fileTypeFromFile(req.file.path);
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+    if (!detectedType || !allowedTypes.includes(detectedType.mime)) {
+      try {
+        await fs.unlink(req.file.path);
+      } catch (err) {
+        console.error(err);
+      }
+
+      return res.status(400).json({
+        error: "Invalid Image Content",
+      });
+    }
+
+    next();
+  } catch (err) {
+    next(err);
+  }
+}
+
+app.post(
+  "/api/profiles/upload",
+  isAuthenticated,
+  upload.single("profileImg"),
+  validateImgContent,
+  async (req, res) => {
+    let newFilePath = req.file?.path;
+
+    try {
+      console.log("UPLOAD ROUTE REACHED");
+      if (!req.file) {
+        return res.status(400).json({
+          error: "File Not Found",
+        });
+      }
+
+      const user = await User.findById(req.session.userId);
+
+      if (!user) {
+        return res.status(404).json({
+          error: "User Not Found",
+        });
+      }
+
+      const imagePath = `/uploads/profiles/${req.file.filename}`;
+      const oldImg = user.profileImage;
+
+      const updatedUser = await User.findByIdAndUpdate(
+        req.session.userId,
+        { profileImage: imagePath },
+        { new: true },
+      );
+
+      if (!updatedUser) {
+        return res.status(404).json({
+          error: "User Not Found",
+        });
+      }
+
+      console.log("Updated profile image:", updatedUser.profileImage);
+      const checkUser = await User.findById(req.session.userId);
+      console.log("Database:", checkUser.profileImage);
+
+      newFilePath = null;
+
+      if (
+        oldImg &&
+        oldImg !== imagePath &&
+        oldImg.startsWith("/uploads/profiles/")
+      ) {
+        const oldFileName = path.basename(oldImg);
+
+        const oldImgPath = path.join(
+          __dirname,
+          "uploads",
+          "profiles",
+          oldFileName,
+        );
+
+        try {
+          await fs.unlink(oldImgPath);
+        } catch (cleanupErr) {
+          console.error("Old image cleanup failed:", cleanupErr);
+        }
+      }
+
+      return res.json({
+        message: "successful",
+        profileImg: updatedUser.profileImage,
+      });
+    } catch (err) {
+      console.error(err);
+
+      if (newFilePath) {
+        try {
+          await fs.unlink(newFilePath);
+        } catch (cleanupErr) {
+          console.error("New image cleanup failed:", cleanupErr);
+        }
+      }
+
+      return res.status(500).json({
+        error: "Internal Server Error",
+      });
+    }
+  },
+);
+
+app.use(profileUploadError);
 
 app.listen(3001, () => {
   console.log("backend is running");

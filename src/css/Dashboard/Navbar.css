@@ -1,0 +1,81 @@
+/* Navbar floats over the sidebar (brand) and the banner (actions) */
+.dashboard-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  height: 0;
+  pointer-events: none;
+}
+
+.navbar-brand {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: var(--sidebar-width);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 800;
+  pointer-events: auto;
+}
+
+.brand-star {
+  color: #b79cff;
+  font-size: 16px;
+}
+
+.navbar-actions {
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.navbar-profile,
+.navbar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--brand);
+  box-shadow: 0 6px 18px rgba(24, 10, 80, 0.18);
+  transition: transform 0.15s;
+}
+
+.navbar-profile {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.navbar-logout {
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.navbar-profile:hover,
+.navbar-logout:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .navbar-brand {
+    width: 100%;
+  }
+  .navbar-actions {
+    top: 96px;
+  }
+}

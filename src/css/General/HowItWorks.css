@@ -1,0 +1,320 @@
+@font-face {
+    font-family: "Vazirmatn";
+    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+}
+
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how-it-works {
+  width: 100%;
+  min-height: 100vh;
+  background: #fcfcfe;
+  color: #171b2d;
+  direction: rtl;
+  font-family: "Vazirmatn", sans-serif;
+}
+
+.how-it-works-body {
+  width: calc(100% - 90px);
+  margin: 45px;
+  overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.h-i-w-header {
+  position: relative;
+  min-height: 570px;
+  padding: 80px 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: right;
+  isolation: isolate;
+}
+
+.learning-road {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 22px;
+  margin-bottom: 20px;
+  border-radius: 50px;
+  background: #eee9ff;
+  color: #5b35f5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.learning-road p {
+  margin: 0;
+}
+
+.h-i-w-header .learning-road,
+.h-i-w-header h1,
+.h-i-w-header .road-des {
+  position: relative;
+  z-index: 1;
+  width: 45%;
+}
+
+.h-i-w-header h1 {
+  max-width: 560px;
+}
+
+.h-i-w-header h1 span {
+  color: #5b35f5;
+}
+
+.h-i-w-header .road-des {
+    max-width: 560px;
+}
+
+.road-des {
+  max-width: 510px;
+  margin: 0;
+  color: #5f6473;
+  font-size: 16px;
+  line-height: 2.3;
+}
+
+.h-i-w-header > img {
+  position: absolute;
+  width: 50%;
+  max-width: 620px;
+  height: auto;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+/* =========================
+   STEPS
+========================= */
+
+.steps {
+  position: relative;
+  padding: 40px 7% 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* common step style */
+
+.step-1,
+.step-2,
+.step-3,
+.step-4 {
+  position: relative;
+  min-height: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+  padding: 25px 35px;
+}
+
+.step-1,
+.step-3 {
+  grid-template-areas: "content image";
+}
+
+.step-2,
+.step-4 {
+  grid-template-areas: "image content";
+}
+
+/* images */
+
+.step-1 > img,
+.step-2 > img,
+.step-3 > img,
+.step-4 > img {
+  grid-area: auto;
+  grid-row: 1 / 3;
+}
+
+.step-1 > img:hover,
+.step-2 > img:hover,
+.step-3 > img:hover,
+.step-4 > img:hover {
+  transform: translateY(-7px);
+}
+
+/* text */
+
+/* متن مراحل */
+.step-1 h2,
+.step-2 h2,
+.step-3 h2,
+.step-4 h2 {
+  grid-area: auto;
+  margin: 0 0 12px;
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.step-1 p,
+.step-2 p,
+.step-3 p,
+.step-4 p {
+  grid-area: auto;
+  margin: 0;
+  color: #5f6473;
+  font-size: 15px;
+  line-height: 2.5;
+}
+
+/* number */
+
+.number {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e6d9ff;
+  color: #5b35f5;
+  font-size: 29px;
+  font-weight: 800;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+  .h-i-w-header {
+    min-height: 500px;
+  }
+
+  .h-i-w-header > img {
+    width: 45%;
+  }
+
+  .step-1,
+  .step-2,
+  .step-3,
+  .step-4 {
+    gap: 25px;
+    padding: 25px 20px;
+  }
+
+  .step-1 h2,
+  .step-2 h2,
+  .step-3 h2,
+  .step-4 h2 {
+    font-size: 25px;
+  }
+
+  .step-1 p,
+  .step-2 p,
+  .step-3 p,
+  .step-4 p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  .how-it-works-body {
+    width: calc(100% - 30px);
+    margin: 0 15px;
+  }
+
+  .h-i-w-header {
+    min-height: 650px;
+    padding: 50px 7% 300px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .h-i-w-header h1 {
+    font-size: 30px;
+  }
+
+  .road-des {
+    font-size: 14px;
+  }
+
+  .h-i-w-header > img {
+    width: 95%;
+    max-width: 420px;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .steps {
+    padding: 30px 3% 65px;
+    gap: 45px;
+  }
+
+  .step-1,
+  .step-2,
+  .step-3,
+  .step-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 55px 15px 20px;
+    min-height: auto;
+  }
+
+  .number {
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 48px;
+    height: 48px;
+    font-size: 23px;
+  }
+
+  .step-1 > img,
+  .step-2 > img,
+  .step-3 > img,
+  .step-4 > img {
+    width: 90%;
+    max-height: 230px;
+    order: 2;
+  }
+
+  .step-1 h2,
+  .step-2 h2,
+  .step-3 h2,
+  .step-4 h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .step-1 p,
+  .step-2 p,
+  .step-3 p,
+  .step-4 p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 2.3;
+  }
+
+  .step-1 br,
+  .step-2 br,
+  .step-3 br,
+  .step-4 br {
+    display: none;
+  }
+}

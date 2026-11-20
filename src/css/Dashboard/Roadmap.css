@@ -1,0 +1,231 @@
+.roadmap-section {
+  grid-area: roadmap;
+  padding: 28px;
+}
+
+.roadmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roadmap-details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border: none;
+  background: none;
+  color: var(--brand);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* timeline */
+.roadmap-timeline {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  padding: 28px 4px 14px;
+  overflow-x: auto;
+}
+
+.timeline-line {
+  display: none;
+}
+
+.roadmap-item {
+  position: relative;
+  flex: 1 0 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line from this marker to the next one (leftwards in RTL) */
+.roadmap-item::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  right: 50%;
+  left: calc(-50% - 24px);
+  height: 3px;
+  border-radius: 3px;
+  background: var(--track);
+  z-index: 0;
+}
+
+.roadmap-item.completed:has(+ .roadmap-item:is(.completed, .current))::after {
+  background: var(--brand);
+}
+
+.roadmap-item:last-child::after {
+  display: none;
+}
+
+.timeline-marker {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: #ece9fa;
+  color: #9b97b8;
+}
+
+.roadmap-item.completed .timeline-marker {
+  background: var(--brand);
+  color: #fff;
+}
+
+.roadmap-item.current .timeline-marker {
+  background: #fff;
+  color: var(--brand);
+  border: 3px solid var(--brand);
+  box-shadow: 0 0 0 8px rgba(95, 45, 230, 0.14);
+}
+
+.roadmap-connector {
+  display: none;
+}
+
+/* locked steps: not clickable */
+.roadmap-item.locked .timeline-marker,
+.roadmap-item.locked .roadmap-step-card {
+  cursor: not-allowed;
+}
+
+.roadmap-item.locked .roadmap-step-card:hover {
+  background: var(--surface);
+}
+
+/* step card */
+.roadmap-step-card {
+  width: 100%;
+  margin-top: 20px;
+  padding: 18px;
+  text-align: right;
+  background: var(--surface);
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.roadmap-item.locked .roadmap-step-card {
+  opacity: 0.75;
+}
+
+.roadmap-step-card:hover {
+  background: #f0ecfd;
+}
+
+.roadmap-step-card.selected {
+  background: #fff;
+  border-color: var(--brand);
+  box-shadow: 0 8px 22px rgba(82, 50, 212, 0.12);
+}
+
+.roadmap-step-number {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--icon-circle);
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.roadmap-step-card h3 {
+  margin: 12px 0 6px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.roadmap-step-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.roadmap-step-progress {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.mini-progress {
+  height: 6px;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--track);
+}
+
+.mini-progress div {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--brand);
+  transition: width 0.4s ease;
+}
+
+.empty-roadmap,
+.empty-exercises {
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* exercises */
+.roadmap-exercises {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.exercise-heading h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f8f7fe;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.exercise-item:hover {
+  background: #f0ecfd;
+}
+
+.exercise-item input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.exercise-item:has(input:checked) span {
+  color: var(--muted);
+  text-decoration: line-through;
+}

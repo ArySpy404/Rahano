@@ -10,7 +10,7 @@ export default function WaitingPage () {
     useEffect(() => {
             const timer = setTimeout(() => {
               navigate("/Auth", { replace: true });
-            }, 2000);
+            }, 3000);
 
             return () => clearTimeout(timer);
           }, [navigate]);
@@ -23,7 +23,7 @@ export default function WaitingPage () {
                 </div>
             </div>
             <h2>داریم حسابتو آماده می‌کنیم</h2>
-                <p>چند لحظه صبر کن تا بتونی مسیرتو بسازی...</p>
+                <p className="waiting-message">چند لحظه صبر کن تا بتونی مسیرتو بسازی...</p>
             </div>
         </div>
     )

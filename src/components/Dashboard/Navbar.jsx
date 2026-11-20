@@ -1,13 +1,17 @@
-import Profile from "./Profile";
-import "../../css/Dashboard/Header.css";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Onbording/AuthCheck";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Notification } from "@hugeicons/core-free-icons";
+import "../../css/Dashboard/Navbar.css";
+import Profile from "./Profile";
+import { LogOut, UserRound } from "lucide-react";
 
-export default function Header({ user }) {
+export default function Navbar() {
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+
   const handleLogOut = () => {
     fetch("http://localhost:3001/api/logout", {
       method: "POST",
@@ -40,20 +44,27 @@ export default function Header({ user }) {
         console.error(err);
       });
   };
-
   return (
-    <div className="header">
-      {message && <p className="res-message">{message}</p>}
-      <h3>رهانو</h3>
-      <div className="profile-controll">
-        <div className="profile-img">
-          <Profile />
-          {user.name}
-        </div>
-        <button className="log-out" onClick={handleLogOut}>
+    <header className="dashboard-navbar">
+      <div className="navbar-brand">
+        <span>رهانو</span>
+        <span className="brand-star">✦</span>
+      </div>
+
+      <div className="navbar-actions">
+        <button
+          className="navbar-profile"
+          onClick={() => navigate("/profile")}
+          aria-label="پروفایل"
+        >
+          <UserRound size={22} />
+        </button>
+
+        <button className="navbar-logout" onClick={handleLogOut}>
           خروج از حساب
+          <LogOut size={17} />
         </button>
       </div>
-    </div>
+    </header>
   );
 }

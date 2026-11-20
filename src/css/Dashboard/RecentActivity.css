@@ -1,0 +1,93 @@
+.dashboard .recent-activity {
+  grid-area: activity;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+}
+
+.dashboard .activity-header {
+  margin-bottom: 8px;
+}
+
+.dashboard .activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard .activity-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.dashboard .activity-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dashboard .activity-check {
+  flex-shrink: 0;
+  box-sizing: content-box;
+  width: 20px;
+  height: 20px;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(123, 196, 127, 0.18);
+  color: #4d9a58;
+}
+
+.dashboard .activity-info {
+  flex: 1;
+  min-width: 0;
+  text-align: right;
+}
+
+.dashboard .activity-info h3 {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dashboard .activity-info p {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard .activity-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 32px 16px;
+  text-align: center;
+  border: 1.5px dashed #ddd6f7;
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.dashboard .activity-empty p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dashboard .activity-empty span {
+  font-size: 14px;
+  color: var(--muted);
+}

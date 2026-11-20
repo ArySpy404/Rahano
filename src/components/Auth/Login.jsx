@@ -58,9 +58,8 @@ export default function Login() {
 
   return (
     <div className="Login">
-      {message && <p className="res-message">{message}</p>}
-
       <div className="form">
+        {message && <p className="res-message">{message}</p>}
         <form className="form" onSubmit={handleSubmit}>
           <label>ایمیل</label>
           <div className="input-box">

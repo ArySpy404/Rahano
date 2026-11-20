@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#100A2D"/>
+      <stop offset=".52" stop-color="#21104F"/>
+      <stop offset="1" stop-color="#6334B4"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="800" y1="220" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6B3DC0" stop-opacity="0"/>
+      <stop offset="1" stop-color="#B68AFF" stop-opacity=".72"/>
+    </linearGradient>
+    <linearGradient id="moon" x1="40" y1="170" x2="330" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D5B9FF"/>
+      <stop offset="1" stop-color="#7547C8"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="800" y1="350" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9A4FF" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#7543C5"/>
+    </linearGradient>
+    <linearGradient id="cliff" x1="1420" y1="340" x2="1550" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3D237D"/>
+      <stop offset="1" stop-color="#170D3B"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect width="1600" height="500" rx="28"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <rect width="1600" height="500" fill="url(#sky)"/>
+    <path d="M0 100C190 20 290 75 420 5M1050 0C1190 80 1330 0 1600 65" stroke="#8C5AE0" stroke-opacity=".2" stroke-width="2"/>
+    <path d="M0 280C240 210 360 315 560 255S930 180 1130 250s320 45 470-40V500H0V280Z" fill="url(#haze)"/>
+    <!-- distant nebula ribbons -->
+    <path d="M0 150C210 220 300 100 480 145S780 240 980 155 1320 80 1600 130" stroke="#8756D2" stroke-opacity=".22" stroke-width="30"/>
+    <path d="M0 185C220 245 350 130 500 175S800 260 1000 185 1360 115 1600 160" stroke="#B18AF4" stroke-opacity=".13" stroke-width="3"/>
+    <!-- left moon -->
+    <circle cx="145" cy="320" r="190" fill="url(#moon)" opacity=".96"/>
+    <path d="M-20 265C35 210 90 230 125 270s58 46 92 20 73-20 110 23" fill="#A47BEA" opacity=".5"/>
+    <path d="M-15 345c54-48 92-42 126-8 27 28 61 30 91 4 34-30 74-19 112 17" stroke="#E4D0FF" stroke-opacity=".28" stroke-width="10"/>
+    <g fill="#6841B0" opacity=".38">
+      <circle cx="78" cy="260" r="20"/><circle cx="215" cy="205" r="13"/><circle cx="265" cy="350" r="24"/>
+      <circle cx="110" cy="410" r="10"/><circle cx="300" cy="280" r="8"/>
+    </g>
+    <ellipse cx="155" cy="320" rx="250" ry="70" transform="rotate(-17 155 320)" stroke="#A77BEA" stroke-width="4" opacity=".6"/>
+    <!-- ringed planet -->
+    <circle cx="1275" cy="142" r="72" fill="#8F62D5"/>
+    <circle cx="1275" cy="142" r="63" fill="#7048B7"/>
+    <path d="M1220 130c20-35 69-49 108-22 21 15 27 44 20 66-22 30-78 39-111 10-15-13-23-34-17-54Z" fill="#A77BE8" opacity=".5"/>
+    <ellipse cx="1275" cy="142" rx="155" ry="28" transform="rotate(-17 1275 142)" stroke="#B68AF4" stroke-width="4"/>
+    <path d="M1125 188c57-38 231-72 302-113" stroke="#5A36A0" stroke-width="8" opacity=".7"/>
+    <!-- small planets -->
+    <circle cx="430" cy="190" r="17" fill="#7048B7"/>
+    <circle cx="426" cy="185" r="11" fill="#A17AE7" opacity=".7"/>
+    <circle cx="1450" cy="300" r="14" fill="#8D5BD0"/>
+    <!-- stars -->
+    <g fill="#D8B9FF">
+      <circle cx="85" cy="52" r="2"/><circle cx="350" cy="70" r="2.5"/><circle cx="535" cy="110" r="2"/>
+      <circle cx="720" cy="48" r="2"/><circle cx="900" cy="155" r="2.5"/><circle cx="1080" cy="65" r="2"/>
+      <circle cx="1415" cy="60" r="2.5"/><circle cx="1530" cy="190" r="2"/><circle cx="610" cy="270" r="2"/>
+      <circle cx="1010" cy="285" r="2"/><circle cx="1330" cy="255" r="2"/><circle cx="780" cy="210" r="1.8"/>
+    </g>
+    <g fill="#A878F1">
+      <path d="M300 55l7 23 23 7-23 7-7 23-7-23-23-7 23-7 7-23Z"/>
+      <path d="M990 210l5 16 16 5-16 5-5 16-5-16-16-5 16-5 5-16Z"/>
+      <path d="M1500 65l5 15 15 5-15 5-5 15-5-15-15-5 15-5 5-15Z"/>
+      <path d="M600 320l4 12 12 4-12 4-4 12-4-12-12-4 12-4 4-12Z"/>
+    </g>
+    <!-- distant hills -->
+    <path d="M0 430c170-90 270-60 390-10 150 64 260 10 400-48 145-60 255-28 380 35 150 75 280 28 430-35v128H0V430Z" fill="#4C2A91" opacity=".72"/>
+    <!-- cloud banks -->
+    <path d="M0 420c35-40 70-45 105-10 15-56 83-64 116-10 33-52 103-45 124 12 47-41 102-17 119 28 48-30 91-8 111 40H0v-60Z" fill="url(#cloud)"/>
+    <path d="M620 470c28-48 86-55 122-13 34-60 116-58 151-4 39-54 105-46 133 7 38-34 90-22 111 20H620v-10Z" fill="#A879EA" opacity=".78"/>
+    <path d="M1120 470c38-66 108-70 146-17 33-53 103-52 135 2 42-42 99-30 124 25v20h-405v-30Z" fill="#B88DF4" opacity=".85"/>
+    <!-- right rocky summit -->
+    <path d="M1260 500l110-112 68 12 70-95 92 38v157h-340Z" fill="url(#cliff)"/>
+    <path d="M1368 388l70 12 70-95 92 38-68 9-57 76-69-11-81 83" fill="#6840B0" opacity=".65"/>
+    <path d="M1450 307V220" stroke="#211044" stroke-width="6"/>
+    <path d="M1452 222c38-21 61 10 89-3v42c-27 14-52-16-89 5v-44Z" fill="#A879E9"/>
+    <path d="M1370 500l82-93 51 8-70 85" fill="#25134F" opacity=".8"/>
+    <!-- soft foreground glow -->
+    <path d="M0 485c250-50 390-7 560 15s350-25 520-28 330 42 520-2v30H0v-15Z" fill="#C29AFF" opacity=".24"/>
+  </g>
+</svg>

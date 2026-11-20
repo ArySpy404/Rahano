@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 440" width="520" height="440">
+  <defs>
+    <linearGradient id="book" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B4FE0"/><stop offset="1" stop-color="#4A2FBF"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#D9D0FA" stop-opacity=".6"/></linearGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#CFC4F8" stop-opacity=".7"/><stop offset="1" stop-color="#CFC4F8" stop-opacity="0"/></radialGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#4A2FBF" flood-opacity=".3"/></filter>
+    <filter id="sh2"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#6B4FE0" flood-opacity=".18"/></filter>
+  </defs>
+  <ellipse cx="260" cy="260" rx="250" ry="190" fill="url(#glow)"/>
+  <ellipse cx="270" cy="400" rx="130" ry="18" fill="#6B4FE0" opacity=".18"/>
+  <!-- cards -->
+  <g filter="url(#sh2)">
+    <g transform="rotate(-6 100 200)">
+      <rect x="30" y="110" width="140" height="190" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".8"/>
+      <circle cx="75" cy="160" r="16" fill="#7C5CE6"/><path d="M50 195c3-18 40-18 50 0z" fill="#7C5CE6"/>
+      <rect x="55" y="215" width="80" height="8" rx="4" fill="#B7A8F2"/><rect x="55" y="233" width="95" height="8" rx="4" fill="#CFC4F8"/><rect x="55" y="251" width="70" height="8" rx="4" fill="#CFC4F8"/>
+    </g>
+    <g transform="rotate(7 430 220)">
+      <rect x="360" y="120" width="140" height="190" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".8"/>
+      <circle cx="420" cy="170" r="16" fill="#7C5CE6"/><path d="M395 205c3-18 40-18 50 0z" fill="#7C5CE6"/>
+      <rect x="385" y="225" width="80" height="8" rx="4" fill="#B7A8F2"/><rect x="385" y="243" width="95" height="8" rx="4" fill="#CFC4F8"/><rect x="385" y="261" width="70" height="8" rx="4" fill="#CFC4F8"/>
+    </g>
+  </g>
+  <!-- book -->
+  <g transform="rotate(8 265 215)" filter="url(#sh)">
+    <rect x="182" y="58" width="196" height="296" rx="16" fill="#CFC6F5"/>
+    <rect x="172" y="50" width="196" height="296" rx="16" fill="url(#book)"/>
+    <rect x="172" y="50" width="14" height="296" rx="8" fill="#fff" opacity=".12"/>
+    <!-- logo -->
+    <g transform="translate(270 125)" fill="#fff">
+      <path d="M-4 -52v34" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-2 -52l24 8-24 10z"/>
+      <path d="M-34 22c10-26 26-28 42-34l-4 14c-12 4-20 8-26 24z"/>
+      <path d="M30 6c-8-8-22-6-32 4l-12 10c-8 8 0 20 12 14l14-8c10-6 24-4 28 8-4-16-8-22-10-28z" opacity=".95"/>
+    </g>
+    <text x="270" y="228" text-anchor="middle" font-family="Vazirmatn, Tahoma, sans-serif" font-size="38" font-weight="800" fill="#fff">رهانو</text>
+    <g transform="rotate(-8 270 305)">
+      <rect x="196" y="288" width="148" height="30" rx="9" fill="#E8E2FC"/>
+      <text x="270" y="308" text-anchor="middle" font-family="Vazirmatn, Tahoma, sans-serif" font-size="14" font-weight="600" fill="#4A2FBF">شناسنامهٔ رهانو</text>
+    </g>
+  </g>
+  <!-- orbit -->
+  <ellipse cx="270" cy="250" rx="245" ry="62" transform="rotate(-14 270 250)" fill="none" stroke="#fff" stroke-width="6" opacity=".75"/>
+  <ellipse cx="270" cy="250" rx="245" ry="62" transform="rotate(-14 270 250)" fill="none" stroke="#B7A8F2" stroke-width="1.5"/>
+  <!-- sparkles -->
+  <g fill="#9D86EC">
+    <path d="M90 55l7 18 18 7-18 7-7 18-7-18-18-7 18-7z"/>
+    <path d="M440 70l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" opacity=".7"/>
+    <path d="M60 340l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" opacity=".6"/>
+    <path d="M470 380l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" opacity=".6"/>
+  </g>
+</svg>

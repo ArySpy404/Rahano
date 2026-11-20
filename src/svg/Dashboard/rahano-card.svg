@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 200" width="330" height="400" direction="rtl">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6F4FE"/>
+      <stop offset="1" stop-color="#ECE9FA"/>
+    </linearGradient>
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8E73E6"/>
+      <stop offset="1" stop-color="#7656D4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- card background -->
+  <rect width="165" height="200" rx="14" fill="url(#bg)"/>
+  <path d="M0 100 Q82 88 165 100 V186 a14 14 0 0 1 -14 14 H14 a14 14 0 0 1 -14 -14 Z" fill="#E7E3F7"/>
+
+  <!-- plant -->
+  <path d="M82 54 C82 46 82 40 82 34" stroke="#3E9B5F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M82 40 C70 40 60 32 58 20 C71 19 81 26 82 40 Z" fill="#5BBF74"/>
+  <path d="M82 36 C84 24 94 16 106 17 C106 29 96 38 82 36 Z" fill="#3FA862"/>
+
+  <!-- pot -->
+  <path d="M60 62 H104 L98 90 Q97 94 93 94 H71 Q67 94 66 90 Z" fill="url(#pot)"/>
+  <rect x="55" y="52" width="54" height="12" rx="6" fill="#9A82EC"/>
+  <rect x="55" y="52" width="54" height="5" rx="2.5" fill="#B3A0F5" opacity=".6"/>
+
+  <!-- text -->
+  <g font-family="Vazirmatn, Tahoma, 'Noto Sans Arabic', sans-serif" font-weight="800" font-size="15" fill="#1F1B4D" text-anchor="middle">
+    <text x="82.5" y="128">با رهانو،</text>
+    <text x="82.5" y="152">مسیرت رو پیدا کن</text>
+  </g>
+
+  <!-- heart -->
+  <path d="M82.5 184 C70 174 68 166 74 163 C78 161 81.500 163 82.500 166 C83.500 163 87 161 91 163 C97 166 95 174 82.500 184 Z" fill="#3B2F6B"/>
+</svg>

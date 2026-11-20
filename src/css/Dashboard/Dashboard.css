@@ -1,125 +1,162 @@
-@font-face {
-    font-family: 'Vazirmatn';
-    src: url(../../font/Vazirmatn-VariableFont_wght.ttf);
+:root {
+  --sidebar-bg: #181a35;
+  --sidebar-active: #43309f;
+  --brand: #5232d4;
+  --brand-soft: #8a6df0;
+  --page-bg: #f3f0fc;
+  --card-bg: #faf9ff;
+  --surface: #f4f1fd;
+  --icon-circle: #e8e2fa;
+  --track: #e9e5f8;
+  --border: #e8e4f7;
+  --text: #1b1b3a;
+  --muted: #6b6a8a;
+  --success: #7bc47f;
+  --radius-card: 20px;
+  --shadow-card: 0 6px 24px rgba(88, 58, 200, 0.07);
+  --sidebar-width: 260px;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+.dashboard,
+.dashboard button,
+.dashboard input {
+  font-family: "Vazirmatn", "Vazir", system-ui, sans-serif;
 }
+
 .dashboard {
-    direction: rtl;
-    background: linear-gradient(180deg, #FCFCFE 0%, #e4ddf9 100%);
-    background-repeat: no-repeat;
-    background-position: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-inline: 16px;
-    font-family: 'Vazirmatn', sans-serif;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  min-height: 100vh;
+  direction: rtl;
+  color: var(--text);
+  background: var(--page-bg);
 }
 
-.steps-title {
-    margin-right: 2vw;
+.dashboard button {
+  cursor: pointer;
+}
+
+.dashboard .dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 56px;
+  background: linear-gradient(180deg, #f1eefc 0%, #faf9ff 55%, #ece7fb 100%);
+}
+
+.dashboard-main > :not(.welcome-banner) {
+  margin-inline: 56px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "roadmap   roadmap  roadmap"
+    "shortcuts activity motivation";
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* shared card look */
+.stat-card,
+.roadmap-section,
+.shortcuts-section,
+.recent-activity {
+  background: var(--card-bg);
+  border: 1px solid rgba(95, 45, 230, 0.06);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* section headers */
+.roadmap-heading,
+.shortcuts-header,
+.activity-header,
+.exercise-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand);
+}
+
+.roadmap-heading h2,
+.shortcuts-header h2,
+.activity-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* states: loading / no roadmap / error */
+.auth-check,
+.no-roadmap,
+.roadmap-error {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  direction: rtl;
+  background: var(--page-bg);
+  font-family: "Vazirmatn", "Vazir", system-ui, sans-serif;
+  color: var(--text);
 }
 
 .no-roadmap-detail,
 .roadmap-error-detail {
-  color: #171b2d;
-  font-family: "Vazirmatn", sans-serif;
-  direction: rtl;
-  background-color: #FCFCFE;
-  width: 100%;
-  max-width: 760px;
-  height: auto;
-  box-shadow: 0 20px 60px #5f2de624;
-  border-radius: 18px;
-  padding: 40px;
-  margin: 60px auto;
-}
-
-.no-roadmap,
-.roadmap-error,
-.auth-loading {
-  background: url(../../svg/Onbording/rahano-onboarding-background.svg);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
+  width: min(440px, 90%);
+  padding: 40px 32px;
   text-align: center;
-  color: #171b2d;
-  font-family: "Vazirmatn", sans-serif;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
 }
 
-.no-roadmap h1,
-.roadmap-error h1 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+.no-roadmap-detail h1,
+.roadmap-error-detail h1 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 800;
 }
 
-.no-roadmap p,
-.roadmap-error p {
-  color: #5f6473;
-  line-height: 1.9;
-  margin-bottom: 24px;
+.no-roadmap-detail p,
+.roadmap-error-detail p {
+  margin: 0 0 24px;
+  color: var(--muted);
 }
 
-.no-roadmap button,
-.roadmap-error button {
+.no-roadmap-detail button,
+.roadmap-error-detail button {
+  padding: 13px 28px;
   border: none;
   border-radius: 12px;
-  padding: 12px 24px;
-  background: #5b35f5;
+  background: var(--brand);
   color: #fff;
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition:
-    background 180ms ease,
-    transform 180ms ease;
+  box-shadow: 0 8px 20px rgba(82, 50, 212, 0.28);
 }
 
-.no-roadmap button:hover,
-.roadmap-error button:hover {
-  background: #4824dc;
-  transform: translateY(-2px);
-}
-
-.no-roadmap button:focus-visible,
-.roadmap-error button:focus-visible {
-  outline: 3px solid #d7ccfb;
-  outline-offset: 3px;
-}
-
-.auth-loading {
-  color: #5f6473;
-  font-size: 0.95rem;
-}
-
-.auth-check {
-  box-shadow: 5px 5px 10px 10px #E8E8FF;
-  min-height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  direction: rtl;
-  width: 80%;
-  margin: 30% auto;
-  border-radius: 12px;
-  padding: 32px 16px;
-
-  font-family: 'Vazirmatn';
-
-  animation: float 1.2s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "roadmap" "shortcuts" "activity" "motivation";
   }
+}
 
-  50% {
-    transform: translateY(-8px);
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
   }
+  .dashboard-main > :not(.welcome-banner) {
+    margin-inline: 20px;
+  }
+}
+
+.dashboard-grid > * {
+  min-width: 0;
 }

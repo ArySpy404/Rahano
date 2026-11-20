@@ -22,6 +22,22 @@
     font-size: 23px;
     margin-right: 6px;
 }
+.about-us {
+    color: #171B2D;
+    text-decoration: none;
+    font-weight: normal;
+    margin-top: 2px;
+}
+.about-us.active {
+    color: #5B35F5;
+    border-bottom: 2px solid #5B35F5;
+    border-radius: 2px;
+}
+.how-to-work.active {
+    color: #5B35F5;
+    border-bottom: 2px solid #5B35F5;
+    border-radius: 2px;
+}
 .how-to-work {
     color: #171B2D;
     text-decoration: none;
@@ -102,6 +118,7 @@ img {
     background: none;
     font-size: 25px;
     cursor: pointer;
+    overflow: hidden;
 }
 
  /* =========================================
@@ -219,23 +236,23 @@ img {
         position: relative;
     }
     .landing-nav .left:last-child {
-        display: none;
-    }
-    .landing-nav .left.open {
+    display: none;
+}
+
+.landing-nav .left.open {
     display: flex;
     position: absolute;
+    z-index: 9999;
     top: calc(100% + 8px);
     left: 0;
     flex-direction: column;
     gap: 10px;
-
-    background: #FFFFFF;
+    background: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 5px 5px 18px 2px #e8e8ef;
-
     min-width: 180px;
-    }
+}
     .landing-nav .left.open a {
     width: 100%;
     text-align: center;

@@ -1,0 +1,92 @@
+.dashboard .motivation-section {
+  grid-area: motivation;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard .quote-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 44px 28px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: #efeafc;
+  color: var(--text);
+}
+
+.dashboard .quote-mark {
+  position: absolute;
+  top: 6px;
+  right: 22px;
+  font-family: Georgia, serif;
+  font-size: 72px;
+  line-height: 1;
+  color: rgba(82, 50, 212, 0.2);
+}
+
+.dashboard .quote-card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.dashboard .quote-card > svg {
+  align-self: flex-end;
+  color: var(--brand);
+}
+
+.dashboard .guidance-banner {
+  position: relative;
+  flex: 1;
+  display: flex;
+  min-height: 220px;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, #2b1a6b 0%, #6a49dc 100%);
+  color: #fff;
+}
+
+.dashboard .guidance-icon {
+  position: absolute;
+  bottom: -22px;
+  left: -14px;
+  color: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
+
+.dashboard .guidance-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+}
+
+.dashboard .guidance-content h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.dashboard .guidance-content button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--brand);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(20, 8, 70, 0.25);
+}

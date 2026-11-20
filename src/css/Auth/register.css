@@ -1,8 +1,10 @@
 .res-message {
-    background-color: #e9e4fb;
+    background-color: #EDE8FF;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 2px 2px 20px  #E8E8FF;
     color: #171B2D;
     border-right: 6px solid #ad91fb;
+    align-items: center;
+    width: auto;
 }

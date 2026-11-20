@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1421 222" width="1421" height="222">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#241766"/>
+      <stop offset="0.55" stop-color="#4a33a8"/>
+      <stop offset="1" stop-color="#7a5de0"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e3b8f5"/>
+      <stop offset="1" stop-color="#a77be8"/>
+    </linearGradient>
+    <linearGradient id="planet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7b62e6"/>
+      <stop offset="1" stop-color="#4a36b0"/>
+    </linearGradient>
+    <linearGradient id="planet2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2b4f3"/>
+      <stop offset="1" stop-color="#a98aee"/>
+    </linearGradient>
+    <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8b72ee"/>
+      <stop offset="1" stop-color="#5b43be"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1421" height="222" fill="url(#bg)"/>
+
+  <!-- stars -->
+  <g fill="#fff" opacity="0.85">
+    <circle cx="158" cy="38" r="2.5"/><circle cx="31" cy="97" r="1.5"/>
+    <circle cx="716" cy="136" r="3.5"/><circle cx="838" cy="30" r="1.5"/>
+    <circle cx="1040" cy="97" r="2.5"/><circle cx="1120" cy="170" r="1.5"/>
+    <circle cx="610" cy="62" r="1.5"/><circle cx="1395" cy="78" r="1.5"/>
+    <circle cx="1290" cy="150" r="1.5"/><circle cx="1010" cy="30" r="1.5"/>
+  </g>
+
+  <!-- ringed planet (left) -->
+  <ellipse cx="70" cy="62" rx="62" ry="17" fill="none" stroke="#9a7cf0" stroke-width="2" transform="rotate(-12 70 62)"/>
+  <circle cx="70" cy="56" r="26" fill="url(#planet)"/>
+  <ellipse cx="70" cy="62" rx="62" ry="17" fill="none" stroke="#9a7cf0" stroke-width="2" stroke-dasharray="70 200" stroke-dashoffset="-60" transform="rotate(-12 70 62)"/>
+
+  <!-- small planet (center-right) -->
+  <ellipse cx="910" cy="92" rx="38" ry="28" fill="url(#planet2)"/>
+  <ellipse cx="910" cy="105" rx="30" ry="8" fill="#fff" opacity="0.12"/>
+
+  <!-- bottom-left clouds -->
+  <g fill="url(#cloud)">
+    <circle cx="35" cy="195" r="62"/><circle cx="95" cy="205" r="40"/>
+    <circle cx="140" cy="215" r="28"/><rect x="0" y="195" width="170" height="27"/>
+  </g>
+
+  <!-- bottom-center cloud -->
+  <g fill="url(#cloud)">
+    <circle cx="650" cy="195" r="42"/><circle cx="700" cy="200" r="30"/>
+    <circle cx="610" cy="210" r="25"/><rect x="590" y="200" width="150" height="22"/>
+  </g>
+
+  <!-- small cloud mid -->
+  <g fill="#9a7cf0" opacity="0.6">
+    <ellipse cx="1000" cy="118" rx="34" ry="9"/><circle cx="1000" cy="110" r="12"/>
+  </g>
+
+  <!-- top-right cloud -->
+  <g fill="#a98aee" opacity="0.7">
+    <circle cx="1295" cy="42" r="16"/><circle cx="1330" cy="30" r="22"/>
+    <circle cx="1370" cy="40" r="18"/><rect x="1262" y="42" width="130" height="14"/>
+  </g>
+
+  <!-- mountains -->
+  <path d="M760 222 L880 150 L915 145 L985 190 L1050 222 Z" fill="#5740b8"/>
+  <path d="M1020 222 L1130 110 L1185 45 L1250 120 L1300 150 L1345 130 L1421 190 L1421 222 Z" fill="url(#mtn)"/>
+  <path d="M1185 45 L1250 120 L1300 150 L1240 222 L1150 222 L1195 120 Z" fill="#3f2b94" opacity="0.5"/>
+  <path d="M1155 75 L1185 45 L1215 78 L1198 72 L1185 84 L1172 71 Z" fill="#ece7ff"/>
+
+  <!-- winding path -->
+  <path d="M1080 222 C1210 205 1050 185 1140 160 C1230 135 1125 110 1172 88 C1190 80 1190 72 1186 62"
+        fill="none" stroke="#c9b3ff" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1080 222 C1210 205 1050 185 1140 160 C1230 135 1125 110 1172 88 C1190 80 1190 72 1186 62"
+        fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- flag -->
+  <line x1="1185" y1="45" x2="1185" y2="14" stroke="#e9e4ff" stroke-width="2.5"/>
+  <path d="M1185 14 L1210 20 L1185 28 Z" fill="#fbbf24"/>
+</svg>

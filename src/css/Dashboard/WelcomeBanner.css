@@ -1,0 +1,95 @@
+.welcome-banner {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  margin: 0;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 0 0 32px 32px;
+  background: radial-gradient(
+    120% 150% at 15% 0%,
+    #4a33b0 0%,
+    #2e1d84 45%,
+    #241565 100%
+  );
+}
+
+/* artwork anchored to the right, its left edge fades into the base gradient */
+.banner-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 68%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  pointer-events: none;
+}
+
+.welcome-content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 48%;
+  padding: 0 44px 0 24px;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+.welcome-content h1 {
+  margin: 0 0 10px;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+
+.welcome-content h1 bdi {
+  unicode-bidi: isolate;
+}
+
+.welcome-spark {
+  display: inline-block;
+  margin-inline-start: 10px;
+  font-size: 22px;
+  color: #ffd666;
+  vertical-align: middle;
+}
+
+.welcome-content h3 {
+  margin: 0 0 4px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #ece6ff;
+}
+
+.welcome-content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #cfc3f7;
+}
+
+@media (max-width: 900px) {
+  .welcome-banner {
+    height: 300px;
+    border-radius: 0 0 24px 24px;
+  }
+  .banner-background {
+    width: 100%;
+    opacity: 0.55;
+  }
+  .welcome-content {
+    top: 0;
+    left: auto;
+    right: 0;
+    width: 100%;
+    padding: 100px 24px 0;
+    transform: none;
+  }
+  .welcome-content h1 {
+    font-size: 30px;
+  }
+}

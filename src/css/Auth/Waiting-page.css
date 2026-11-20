@@ -54,6 +54,20 @@
     animation: counter-spin 1.2s linear infinite;
 }
 
+.waiting-message {
+    animation: float 1.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
 @keyframes loading-spin {
     to {
         transform: rotate(360deg);
@@ -72,7 +86,7 @@
         gap: 14px;
     }
 
-    .ring {
+    .w-ring {
         width: 90px;
         height: 90px;
     }
@@ -83,5 +97,13 @@
 
     .waiting-page p {
         font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .waiting-message,
+    .w-ring,
+    .w-icon {
+        animation: none;
     }
 }
